@@ -20,7 +20,7 @@ namespace FrontEnd.Pages
 
         public IEnumerable<IGrouping<DateTimeOffset?, SessionResponse>> Sessions { get; set; }
 
-        public IEnumerable<(int Offset, DayOfWeek? DayofWeek)> DayOffsets { get; set; }
+        public IEnumerable<(int Offset, DayOfWeek? DayofWeek, DateTime? Date)> DayOffsets { get; set; }
 
         public List<int> UserSessions { get; set; }
 
@@ -30,6 +30,11 @@ namespace FrontEnd.Pages
         public string Message { get; set; }
 
         public bool ShowMessage => !string.IsNullOrEmpty(Message);
+
+        public string EventScheduleTitle => "EVENT SCHEDULE";
+
+        public string EventScheduleDescription => "EVENT DESCRIPTION...";
+
 
         protected virtual Task<List<SessionResponse>> GetSessionsAsync()
         {
@@ -52,7 +57,7 @@ namespace FrontEnd.Pages
             var numberOfDays = ((endDate - startDate)?.Days) + 1;
 
             DayOffsets = Enumerable.Range(0, numberOfDays ?? 0)
-                .Select(offset => (offset, (startDate?.AddDays(offset))?.DayOfWeek));
+                .Select(offset => (offset, (startDate?.AddDays(offset))?.DayOfWeek, startDate?.AddDays(offset)));
 
             var filterDate = startDate?.AddDays(day);
 

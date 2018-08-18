@@ -15,7 +15,14 @@ namespace ConferenceDTO
         [StringLength(4000)]
         public string Bio { get; set; }
 
+        [StringLength(30)]
+        public string TagLine { get; set; }
+
         [StringLength(1000)]
         public virtual string WebSite { get; set; }
+
+        [StringLength(1000)]
+        public virtual string Picture { get; set; }
+
     }
 }

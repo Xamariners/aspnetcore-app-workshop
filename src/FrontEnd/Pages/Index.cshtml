@@ -33,6 +33,95 @@
     </div>
 </section>
 <!-- Banner End -->
+
+<!-- Upcoming Event Start -->
+<section id="schedule" class="upcoming-event-style-1 upcoming-event-section width-100 float-left padding-tb-73-80 position-relative text-align-center">
+    <div class="container overflow-hidden wow fadeInUp" data-wow-delay="0.5s">
+        <h2 class="text-large-40 text-transform-uppercase font-weight-600 color-black">@Model.EventScheduleTitle</h2>
+        <h5 class="font-weight-300 text-medium-22 margin-bottom-35 color-bright-gray">@Model.EventScheduleDescription</h5>
+
+    <div class="upcoming-event-nav-slider-style-1 upcoming-event-nav-slider arrow-style-2">
+        
+    @foreach (var day in Model.DayOffsets)
+    {
+        <div class="coming-event-nav-slides bg-dim-gray padding-all-25">
+            <h5 class="font-weight-600 text-medium-22 color-black padding-lr-95">@day.Date.ToString()</h5>
+        </div>
+    }
+    </div>
+
+        <div id="coming-event" class="upcoming-event-for-slider-style-1 upcoming-event-for-slider padding-top-50">
+        @foreach (var day in Model.DayOffsets)
+        {
+            <div class="upcoming-event-slide">
+                @foreach (var timeSlot in Model.Sessions)
+                {
+
+                     foreach (var session in timeSlot)
+                     {
+                         <div class="event-detail-block width-100 float-left position-relative margin-bottom-50">
+                             <div class="row">
+                                 <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12">
+                                     <div class="left-event-time position-relative text-align-center display-table">
+                                         <span class="color-black font-weight-600 text-small-16 display-inline-block float-left">@timeSlot.Key?.ToString("HH:mm")</span>
+                                         <div class="outer-bordered-circle float-right position-relative">
+                                             <div class="inner-filled-circle"></div>
+                                         </div>
+                                     </div>
+                                 </div>
+                                 <div class="col-lg-10 col-md-10 col-sm-9 col-xs-12">
+                                     <div class="event-detail-content bg-offwhite border-dim-gray width-100 float-left position-relative padding-tb-lr-20-30 text-align-left border-radius-5">
+                                         <div class="outer-triangle position-absolute">
+                                             <div class="inner-triangle position-absolute"></div>
+                                         </div>
+                                         <h5 class="color-black margin-bottom-5 font-weight-600 text-medium-22">[@session.Track?.Name] <a asp-page="Session" asp-route-id="@session.ID">@session.Title</a></h5>
+                                         <p class="margin-bottom-22 text-small-16 font-weight-400 color-charcoal-light margin-bottom-25">Available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</p>
+                                         <div class="event-time-speaker-detail" style="padding-right: 10px">
+
+                                             @foreach (var speaker in session.Speakers)
+                                             {
+                                                 <div class="speaker-detail display-inline-table">
+                                                     <div class="speaker-image img-round-62 float-left bg-medium-gray">
+                                                         <img class="img100 img-round height-100 img-object-fit-cover " src="http://placehold.it/62x62" alt="Upcoming Event Speaker">
+                                                     </div>
+                                                     <div class="speaker-name display-table-cell-vertical-middle height-100">
+                                                         <span class="font-weight-600 color-black text-small-16 display-block"><a asp-page="Speaker" asp-route-id="@speaker.ID">@speaker.Name</a></span>
+                                                         <span class="font-weight-400 color-tomato-red text-small-16 display-block">Speaker</span>
+                                                     </div>
+                                                 </div>
+                                             }
+
+                                             <div class="event-detail-button float-right position-relative">
+                                                 <span class="bg-black color-white border-radius-25 text-extra-small-12 font-weight-600 linear-transition cursor-pointer">@session.StartTime?.ToString("HH:mm") - @session.EndTime?.ToString("HH:mm")</span>
+                                                 <a class="btn btn-small tomato-pink-btn" href="#">Details</a>
+                                             </div>
+                                         </div>
+                                     </div>
+                                 </div>
+                             </div>
+                             <form method="post">
+                                 <input type="hidden" name="sessionId" value="@session.ID" />
+                                 <p>
+                                     <a authz-policy="Admin" asp-page="/Admin/EditSession" asp-route-id="@session.ID" class="btn btn-default btn-sm">Edit</a>
+                                     @if (Model.UserSessions.Contains(session.ID))
+                                     {
+                                         <button authz="true" type="submit" asp-page-handler="Remove" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-star" aria-hidden="true"></span></button>
+                                     }
+                                     else
+                                     {
+                                         <button authz="true" type="submit" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span></button>
+                                     }
+                                 </p>
+                             </form>
+                         </div>
+                     }
+                }
+            </div>
+        }
+    </div>
+</section>
+<!-- Upcoming Event End -->
+
 <!-- Agenda Starts-->
 <div class="agenda">
     <h1>My Conference @System.DateTime.Now.Year</h1>
