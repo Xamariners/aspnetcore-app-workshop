@@ -6,6 +6,7 @@ using ConferenceDTO;
 using FrontEnd.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore.Storage.Internal;
 
 namespace FrontEnd.Pages
 {
@@ -35,6 +36,15 @@ namespace FrontEnd.Pages
 
         public string EventScheduleDescription => "EVENT DESCRIPTION...";
 
+        public string GlobalEventDate => "10 November 2018";
+
+        public string GlobalEventAddress => "Across the planet";
+
+        public string GlobalEventName => "MonkeyFest 2018";
+
+        public string GlobalEventShortDescription => "Global Xamarin Bootcamp";
+
+        public string GlobalEventTagLine => "Xamarin Experts across the globe unite for one day";
 
         protected virtual Task<List<SessionResponse>> GetSessionsAsync()
         {
