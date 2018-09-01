@@ -21,7 +21,7 @@ namespace FrontEnd.Pages
 
         public SpeakerResponse Speaker { get; set; }
 
-        public async Task<IActionResult> OnGet(int id)
+        public async Task<IActionResult> OnGet(Guid id)
         {
             Speaker = await _apiClient.GetSpeakerAsync(id);
 

@@ -32,7 +32,7 @@ namespace BackEnd.Data
                 TrackId = session.TrackId,
                 Track = new ConferenceDTO.Track
                 {
-                    TrackID = session?.TrackId ?? 0,
+                    ID = session?.TrackId ?? Guid.Empty,
                     Name = session.Track?.Name
                 },
                 ConferenceID = session.ConferenceID,

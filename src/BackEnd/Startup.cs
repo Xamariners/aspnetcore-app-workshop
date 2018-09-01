@@ -77,7 +77,7 @@ namespace BackEnd
             });
 
             // Comment out the following line to avoid resetting the database each time
-            var loader = new DevIntersectionLoader(app.ApplicationServices);
+            var loader = new ConferenceDataLoader(app.ApplicationServices);
             loader.LoadData("DevIntersection_Vegas_2017.json", "DevIntersection Vegas 2017");
         }
     }

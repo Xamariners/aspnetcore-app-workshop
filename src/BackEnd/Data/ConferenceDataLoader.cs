@@ -7,10 +7,10 @@ using System.IO;
 
 namespace BackEnd
 {
-    public class DevIntersectionLoader : BaseDataLoader
+    public class ConferenceDataLoader : BaseDataLoader
     {
 
-        public DevIntersectionLoader(IServiceProvider services) : base(services)
+        public ConferenceDataLoader(IServiceProvider services) : base(services)
         {
 
             // this.SaveData = false;

@@ -5,12 +5,10 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ConferenceDTO
 {
-    public class Session
-    {
-        public int ID { get; set; }
-
+    public class Session : ObjectBase
+    {  
         [Required]
-        public int ConferenceID { get; set; }
+        public Guid ConferenceID { get; set; }
 
         [Required]
         [StringLength(200)]
@@ -26,6 +24,6 @@ namespace ConferenceDTO
         // Bonus points to those who can figure out why this is written this way
         public TimeSpan Duration => EndTime?.Subtract(StartTime ?? EndTime ?? DateTime.MinValue) ?? TimeSpan.Zero;
 
-        public int? TrackId { get; set; }
+        public Guid? TrackId { get; set; }
     }
 }

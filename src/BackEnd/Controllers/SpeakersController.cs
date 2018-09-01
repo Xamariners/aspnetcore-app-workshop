@@ -30,8 +30,8 @@ namespace BackEnd.Controllers
             return Ok(result);
         }
 
-        [HttpGet("{id:int}")]
-        public async Task<IActionResult> GetSpeaker([FromRoute]int id)
+        [HttpGet("{id:Guid}")]
+        public async Task<IActionResult> GetSpeaker([FromRoute]Guid id)
         {
             var speaker = await _db.Speakers.AsNoTracking()
                                             .Include(s => s.SessionSpeakers)
@@ -70,8 +70,8 @@ namespace BackEnd.Controllers
             return CreatedAtAction(nameof(GetSpeaker), new { id = speaker.ID }, result);
         }
 
-        [HttpPut("{id:int}")]
-        public async Task<IActionResult> UpdateSpeaker([FromRoute]int id, [FromBody]ConferenceDTO.Speaker input)
+        [HttpPut("{id:Guid}")]
+        public async Task<IActionResult> UpdateSpeaker([FromRoute]Guid id, [FromBody]ConferenceDTO.Speaker input)
         {
             var speaker = await _db.FindAsync<Speaker>(id);
 
@@ -97,8 +97,8 @@ namespace BackEnd.Controllers
             return Ok(result);
         }
 
-        [HttpDelete("{id:int}")]
-        public async Task<IActionResult> DeleteSpeaker([FromRoute]int id)
+        [HttpDelete("{id:Guid}")]
+        public async Task<IActionResult> DeleteSpeaker([FromRoute]Guid id)
         {
             var speaker = await _db.FindAsync<Speaker>(id);
 

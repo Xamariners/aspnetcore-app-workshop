@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using BackEnd.Data;
@@ -54,7 +55,7 @@ namespace BackEnd
                     TrackId = s.TrackId,
                     Track = new ConferenceDTO.Track
                                 {
-                                    TrackID = s?.TrackId ?? 0,
+                                    ID = s?.TrackId ?? Guid.Empty,
                                     Name = s.Track?.Name
                                 },
                     Speakers = s?.SessionSpeakers

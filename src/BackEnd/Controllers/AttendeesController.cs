@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -59,7 +60,7 @@ namespace BackEnd
         }
         
         [HttpPost("{username}/session/{sessionId:int}")]
-        public async Task<IActionResult> AddSession(string username, int sessionId)
+        public async Task<IActionResult> AddSession(string username, Guid sessionId)
         {
             var attendee = await _db.Attendees.Include(a => a.SessionsAttendees)
                                                 .ThenInclude(sa => sa.Session)
@@ -93,7 +94,7 @@ namespace BackEnd
         }
 
         [HttpDelete("{username}/session/{sessionId:int}")]
-        public async Task<IActionResult> RemoveSession(string username, int sessionId)
+        public async Task<IActionResult> RemoveSession(string username, Guid sessionId)
         {
             var attendee = await _db.Attendees.Include(a => a.SessionsAttendees)
                                               .SingleOrDefaultAsync(a => a.UserName == username);

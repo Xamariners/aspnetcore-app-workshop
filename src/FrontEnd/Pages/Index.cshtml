@@ -21,10 +21,10 @@
             <div class="md-banner-content margin-lr-auto wow fadeInUp" data-wow-delay="0.5s">
                 <div class="md-bannertext-img md-banner-content-cell-middle height-100">
                     <div class="banner-event-date-venue color-white font-weight-600 text-small-16 position-relative display-table margin-lr-auto margin-bottom-35">
-                        <span class="event-date display-inline-block position-relative"><i class="fa fa-calendar" aria-hidden="true"></i> @Model.GlobalEventDate </span><span class="event-venue display-inline-block position-relative"><i class="fa fa-map-o" aria-hidden="true"></i> @Model.GlobalEventAddress</span>
+                        <span class="event-date display-inline-block position-relative"><i class="fa fa-calendar" aria-hidden="true"></i> @Model.GlobalConference.StartDate.ToLongDateString() </span><span class="event-venue display-inline-block position-relative"><i class="fa fa-map-o" aria-hidden="true"></i> @Model.GlobalConference.Location</span>
                     </div>
-                    <h1 class="text-extra-large-90 color-white font-weight-600 text-transform-uppercase margin-bottom-25"><span class="display-block text-medium-22 color-white font-weight-600 text-transform-uppercase margin-bottom-30">@Model.GlobalEventName</span>@Model.GlobalEventShortDescription</h1>
-                    <h5 class=" display-table margin-lr-auto text-medium-22 color-white font-weight-600 text-transform-uppercase margin-bottom-30 position-relative line-left-right">@Model.GlobalEventTagLine</h5>
+                    <h1 class="text-extra-large-90 color-white font-weight-600 text-transform-uppercase margin-bottom-25"><span class="display-block text-medium-22 color-white font-weight-600 text-transform-uppercase margin-bottom-30">@Model.GlobalConference.Name</span>@Model.GlobalConference.Description</h1>
+                    <h5 class=" display-table margin-lr-auto text-medium-22 color-white font-weight-600 text-transform-uppercase margin-bottom-30 position-relative line-left-right">@Model.GlobalConference.TagLine</h5>
                     <div id="timer-clock-style-3" class="event-time-counter margin-bottom-80 width-100" data-timer="1000"></div>
                     <a class="btn bg-white color-black margin-lr-15" href="#">Register</a><a class="btn empty-btn white-btn margin-lr-15" href="#">Read More</a>
                 </div>
@@ -34,6 +34,75 @@
 </section>
 <!-- Banner End -->
 
+<!-- Event List / Map Start -->
+<section id="contact" class="contactus-style-2 md-contactus bg-white position-relative width-100">
+    <div class="container-fluid wow fadeInUp" data-wow-delay="0.5s">
+        <div class="row">
+            <div class="flex-container display-flex">
+                <div class="col-lg-5 col-md-12 col-sm-12 col-xs-12 no-padding-lr">
+                    <div class="md-map" id="events-map">
+                        
+                    </div>
+                </div>
+                <div class="col-lg-7 col-md-12 col-sm-12 col-xs-12">
+                    <div class="contact-form-address-container width-100">
+                        <h2 class="text-large-40 font-weight-600 text-transform-uppercase color-black margin-bottom-40 editContent" id="dt-contact2-text-1">Lets get in touch</h2>
+                        <div class="md-contact-form-section form-style-3 width-100 float-left margin-bottom-40">
+                            <form method="POST" class="md-contct-form" action="javascript:void(0)">
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                        <div class="md-input md-input-name odd">
+                                            <input name="name" id="md-name" data-email="required" placeholder="Name" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                        <div class="md-input md-input-email even">
+                                            <input name="email" id="md-email" data-email="required" placeholder="Email" type="email">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                        <div class="md-input md-input-number odd">
+                                            <input name="number" id="md-number" data-email="required" placeholder="Phone Number" type="number">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                        <div class="md-input md-input-subject even">
+                                            <input name="subject" id="md-subject" data-email="required" placeholder="Subject" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <div class="md-textarea md-input-comments">
+                                            <textarea name="comment" id="md-comments" data-email="required" placeholder="How Can I Help?"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <div class="md-form-submit">
+                                            <button class="dt_submit btn tomato-pink-btn empty-btn linear-transition" type="submit">SEND MESSAGE</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="contact-address width-100">
+                            <span class="color-black text-small-16 font-weight-600 margin-bottom-5 display-block editContent" id="dt-contact2-text-2">Address</span>
+                            <p class="color-charcoal-light text-small-16 font-weight-400 margin-bottom-35 editContent" id="dt-contact2-text-3">77 Winchester Lane Coachella, CA 92236</p>
+                        </div>
+                        <div class="contact-email width-100">
+                            <span class="color-black text-small-16 font-weight-600 margin-bottom-5 display-block editContent" id="dt-contact2-text-4">Email</span>
+                            <a class="color-charcoal-light text-small-16 font-weight-400 margin-bottom-35 display-inline-block editContent" id="dt-contact2-text-5" href="mailto:support@onepagestudio.com">support@onepagestudio.com</a>
+                        </div>
+                        <div class="contact-number width-100">
+                            <span class="color-black text-small-16 font-weight-600 margin-bottom-5 display-block editContent" id="dt-contact2-text-6">Phone Number</span>
+                            <p class="color-charcoal-light text-small-16 font-weight-400 no-margin-bottom editContent" id="dt-contact2-text-7">+91 1234 567 098</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Event List / Map Ends -->
+
 <!-- Upcoming Event Start -->
 <section id="schedule" class="upcoming-event-style-1 upcoming-event-section width-100 float-left padding-tb-73-80 position-relative text-align-center">
     <div class="container overflow-hidden wow fadeInUp" data-wow-delay="0.5s">
@@ -41,84 +110,104 @@
         <h5 class="font-weight-300 text-medium-22 margin-bottom-35 color-bright-gray">@Model.EventScheduleDescription</h5>
 
         <div class="upcoming-event-nav-slider-style-1 upcoming-event-nav-slider arrow-style-2">
-            
-        @foreach (var day in Model.DayOffsets)
-        {
-            <div class="coming-event-nav-slides bg-dim-gray padding-all-25">
-                <h5 class="font-weight-600 text-medium-22 color-black padding-lr-95"> <a asp-route-day="@day.Offset">@day.DayofWeek?.ToString()</a></h5>
-            </div>
-        }
+
+            @foreach (var day in Model.DayOffsets)
+            {
+                <div class="coming-event-nav-slides bg-dim-gray padding-all-25">
+                    <h5 class="font-weight-600 text-medium-22 color-black padding-lr-95"> <a asp-route-day="@day.Offset">@day.DayofWeek?.ToString()</a></h5>
+                </div>
+            }
         </div>
 
         <div id="coming-event" class="upcoming-event-for-slider-style-1 upcoming-event-for-slider padding-top-50">
-        @foreach (var day in Model.DayOffsets)
-        {
-            <div class="upcoming-event-slide">
-                @foreach (var timeSlot in Model.Sessions)
-                {
-
-                    foreach (var session in timeSlot)
+            @foreach (var day in Model.DayOffsets)
+            {
+                <div class="upcoming-event-slide">
+                    @foreach (var timeSlot in Model.Sessions)
                     {
-                        <div class="event-detail-block width-100 float-left position-relative margin-bottom-50">
-                            <div class="row">
-                                <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12">
-                                    <div class="left-event-time position-relative text-align-center display-table">
-                                        <span class="color-black font-weight-600 text-small-16 display-inline-block float-left">@timeSlot.Key?.ToString("HH:mm")</span>
-                                        <div class="outer-bordered-circle float-right position-relative">
-                                            <div class="inner-filled-circle"></div>
+
+                        foreach (var session in timeSlot)
+                        {
+                            <div class="event-detail-block width-100 float-left position-relative margin-bottom-50">
+                                <div class="row">
+                                    <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12">
+                                        <div class="left-event-time position-relative text-align-center display-table">
+                                            <span class="color-black font-weight-600 text-small-16 display-inline-block float-left">@timeSlot.Key?.ToString("HH:mm")</span>
+                                            <div class="outer-bordered-circle float-right position-relative">
+                                                <div class="inner-filled-circle"></div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-lg-10 col-md-10 col-sm-9 col-xs-12">
-                                    <div class="event-detail-content bg-offwhite border-dim-gray width-100 float-left position-relative padding-tb-lr-20-30 text-align-left border-radius-5">
-                                        <div class="outer-triangle position-absolute">
-                                            <div class="inner-triangle position-absolute"></div>
-                                        </div>
-                                        <h5 class="color-black margin-bottom-5 font-weight-600 text-medium-22">[@session.Track?.Name] <a asp-page="Session" asp-route-id="@session.ID">@session.Title</a></h5>
-                                        <p class="margin-bottom-22 text-small-16 font-weight-400 color-charcoal-light margin-bottom-25">Available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</p>
-                                        <div class="event-time-speaker-detail" style="padding-right: 10px">
+                                    <div class="col-lg-10 col-md-10 col-sm-9 col-xs-12">
+                                        <div class="event-detail-content bg-offwhite border-dim-gray width-100 float-left position-relative padding-tb-lr-20-30 text-align-left border-radius-5">
+                                            <div class="outer-triangle position-absolute">
+                                                <div class="inner-triangle position-absolute"></div>
+                                            </div>
+                                            <h5 class="color-black margin-bottom-5 font-weight-600 text-medium-22">[@session.Track?.Name] <a asp-page="Session" asp-route-id="@session.ID">@session.Title</a></h5>
+                                            <p class="margin-bottom-22 text-small-16 font-weight-400 color-charcoal-light margin-bottom-25">Available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</p>
+                                            <div class="event-time-speaker-detail" style="padding-right: 10px">
 
-                                            @foreach (var speaker in session.Speakers)
-                                            {
-                                                <div class="speaker-detail display-inline-table">
-                                                    <div class="speaker-image img-round-62 float-left bg-medium-gray">
-                                                        <img class="img100 img-round height-100 img-object-fit-cover " src="http://placehold.it/62x62" alt="Upcoming Event Speaker">
+                                                @foreach (var speaker in session.Speakers)
+                                                {
+                                                    <div class="speaker-detail display-inline-table">
+                                                        <div class="speaker-image img-round-62 float-left bg-medium-gray">
+                                                            <img class="img100 img-round height-100 img-object-fit-cover " src="http://placehold.it/62x62" alt="Upcoming Event Speaker">
+                                                        </div>
+                                                        <div class="speaker-name display-table-cell-vertical-middle height-100">
+                                                            <span class="font-weight-600 color-black text-small-16 display-block"><a asp-page="Speaker" asp-route-id="@speaker.ID">@speaker.Name</a></span>
+                                                            <span class="font-weight-400 color-tomato-red text-small-16 display-block">Speaker</span>
+                                                        </div>
                                                     </div>
-                                                    <div class="speaker-name display-table-cell-vertical-middle height-100">
-                                                        <span class="font-weight-600 color-black text-small-16 display-block"><a asp-page="Speaker" asp-route-id="@speaker.ID">@speaker.Name</a></span>
-                                                        <span class="font-weight-400 color-tomato-red text-small-16 display-block">Speaker</span>
-                                                    </div>
+                                                }
+
+                                                <div class="event-detail-button float-right position-relative">
+                                                    <span class="bg-black color-white border-radius-25 text-extra-small-12 font-weight-600 linear-transition cursor-pointer">@session.StartTime?.ToString("HH:mm") - @session.EndTime?.ToString("HH:mm")</span>
+                                                    <a class="btn btn-small tomato-pink-btn" href="#">Details</a>
                                                 </div>
-                                            }
-
-                                            <div class="event-detail-button float-right position-relative">
-                                                <span class="bg-black color-white border-radius-25 text-extra-small-12 font-weight-600 linear-transition cursor-pointer">@session.StartTime?.ToString("HH:mm") - @session.EndTime?.ToString("HH:mm")</span>
-                                                <a class="btn btn-small tomato-pink-btn" href="#">Details</a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                                <form method="post">
+                                    <input type="hidden" name="sessionId" value="@session.ID" />
+                                    <p>
+                                        <a authz-policy="Admin" asp-page="/Admin/EditSession" asp-route-id="@session.ID" class="btn btn-default btn-sm">Edit</a>
+                                        @if (Model.UserSessions.Contains(session.ID))
+                                        {
+                                            <button authz="true" type="submit" asp-page-handler="Remove" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-star" aria-hidden="true"></span></button>
+                                        }
+                                        else
+                                        {
+                                            <button authz="true" type="submit" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span></button>
+                                        }
+                                    </p>
+                                </form>
                             </div>
-                            <form method="post">
-                                <input type="hidden" name="sessionId" value="@session.ID" />
-                                <p>
-                                    <a authz-policy="Admin" asp-page="/Admin/EditSession" asp-route-id="@session.ID" class="btn btn-default btn-sm">Edit</a>
-                                    @if (Model.UserSessions.Contains(session.ID))
-                                    {
-                                        <button authz="true" type="submit" asp-page-handler="Remove" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-star" aria-hidden="true"></span></button>
-                                    }
-                                    else
-                                    {
-                                        <button authz="true" type="submit" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span></button>
-                                    }
-                                </p>
-                            </form>
-                        </div>
+                        }
                     }
-                }
-            </div>
-        }
+                </div>
+            }
         </div>
     </div>
 </section>
 <!-- Upcoming Event End -->
+
+@section scripts {
+    <script type='text/javascript'
+            src='https://www.bing.com/api/maps/mapcontrol?callback=GetMap'
+            async defer></script>
+    <script type='text/javascript'>
+        function GetMap() {
+            renderRequestsMap("events-map", getLocationsFromModelRequests());
+        };
+ 
+        function getLocationsFromModelRequests() {
+            var requestData = [];
+            @foreach (var conference in Model.Conferences){
+                @:var reqData = {lat:@conference.Latitude, long:@conference.Longitude, name:'@conference.Name', color:'blue'};
+                @:requestData.push(reqData);
+            }
+            return requestData;
+        }
+    </script>
+}

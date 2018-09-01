@@ -10,15 +10,15 @@ namespace FrontEnd.Services
     {
         Task<List<SessionResponse>> GetSessionsByAttendeeAsync(string name);
         Task<List<SessionResponse>> GetSessionsAsync();
-        Task<SessionResponse> GetSessionAsync(int id);
+        Task<SessionResponse> GetSessionAsync(Guid id);
         Task<List<SpeakerResponse>> GetSpeakersAsync();
-        Task<SpeakerResponse> GetSpeakerAsync(int id);
+        Task<SpeakerResponse> GetSpeakerAsync(Guid id);
         Task PutSessionAsync(Session session);
         Task<List<SearchResult>> SearchAsync(string query);
         Task AddAttendeeAsync(Attendee attendee);
         Task<AttendeeResponse> GetAttendeeAsync(string name);
-        Task DeleteSessionAsync(int id);
-        Task AddSessionToAttendeeAsync(string name, int sessionId);
-        Task RemoveSessionFromAttendeeAsync(string name, int sessionId);
+        Task DeleteSessionAsync(Guid id);
+        Task AddSessionToAttendeeAsync(string name, Guid sessionId);
+        Task RemoveSessionFromAttendeeAsync(string name, Guid sessionId);
     }
 }

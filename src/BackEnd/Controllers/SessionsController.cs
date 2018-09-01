@@ -34,8 +34,8 @@ namespace BackEnd.Controllers
             return Ok(results);
         }
 
-        [HttpGet("{id:int}")]
-        public async Task<IActionResult> Get([FromRoute]int id)
+        [HttpGet("{id:Guid}")]
+        public async Task<IActionResult> Get([FromRoute]Guid id)
         {
             var session = await _db.Sessions.AsNoTracking()
                                             .Include(s => s.Track)
@@ -81,8 +81,8 @@ namespace BackEnd.Controllers
             return CreatedAtAction(nameof(Get), new { id = result.ID }, result);
         }
 
-        [HttpPut("{id:int}")]
-        public async Task<IActionResult> Put([FromRoute]int id, [FromBody]ConferenceDTO.Session input)
+        [HttpPut("{id:Guid}")]
+        public async Task<IActionResult> Put([FromRoute]Guid id, [FromBody]ConferenceDTO.Session input)
         {
             var session = await _db.Sessions.FindAsync(id);
 
@@ -111,8 +111,8 @@ namespace BackEnd.Controllers
             return Ok(result);
         }
 
-        [HttpDelete("{id:int}")]
-        public async Task<IActionResult> Delete(int id)
+        [HttpDelete("{id:Guid}")]
+        public async Task<IActionResult> Delete(Guid id)
         {
             var session = await _db.Sessions.FindAsync(id);
 

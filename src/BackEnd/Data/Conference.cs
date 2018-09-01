@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using ConferenceDTO;
 
 namespace BackEnd.Data
 {
@@ -9,6 +10,8 @@ namespace BackEnd.Data
         public virtual ICollection<Track> Tracks { get; set; }
 
         public virtual ICollection<Speaker> Speakers { get; set; }
+
+        public virtual ICollection<ConferenceOrganiser> ConferenceOrganisers { get; set; }
 
         public virtual ICollection<Session> Sessions { get; set; }
 

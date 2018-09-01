@@ -44,7 +44,7 @@ namespace FrontEnd.Services
             return await response.Content.ReadAsJsonAsync<AttendeeResponse>();
         }
 
-        public async Task<SessionResponse> GetSessionAsync(int id)
+        public async Task<SessionResponse> GetSessionAsync(Guid id)
         {
             var response = await _httpClient.GetAsync($"/api/sessions/{id}");
 
@@ -67,7 +67,7 @@ namespace FrontEnd.Services
             return await response.Content.ReadAsJsonAsync<List<SessionResponse>>();
         }
 
-        public async Task DeleteSessionAsync(int id)
+        public async Task DeleteSessionAsync(Guid id)
         {
             var response = await _httpClient.DeleteAsync($"/api/sessions/{id}");
 
@@ -79,7 +79,7 @@ namespace FrontEnd.Services
             response.EnsureSuccessStatusCode();
         }
 
-        public async Task<SpeakerResponse> GetSpeakerAsync(int id)
+        public async Task<SpeakerResponse> GetSpeakerAsync(Guid id)
         {
             var response = await _httpClient.GetAsync($"/api/speakers/{id}");
 
@@ -123,14 +123,14 @@ namespace FrontEnd.Services
             return await response.Content.ReadAsJsonAsync<List<SearchResult>>();
         }
 
-        public async Task AddSessionToAttendeeAsync(string name, int sessionId)
+        public async Task AddSessionToAttendeeAsync(string name, Guid sessionId)
         {
             var response = await _httpClient.PostAsync($"/api/attendees/{name}/session/{sessionId}", null);
 
             response.EnsureSuccessStatusCode();
         }
 
-        public async Task RemoveSessionFromAttendeeAsync(string name, int sessionId)
+        public async Task RemoveSessionFromAttendeeAsync(string name, Guid sessionId)
         {
             var response = await _httpClient.DeleteAsync($"/api/attendees/{name}/session/{sessionId}");
 

@@ -7,11 +7,11 @@ namespace BackEnd.Data
 {
     public class SessionSpeaker
     {
-        public int SessionId { get; set; }
+        public Guid SessionId { get; set; }
 
         public Session Session { get; set; }
 
-        public int SpeakerId { get; set; }
+        public Guid SpeakerId { get; set; }
 
         public Speaker Speaker { get; set; }
     }

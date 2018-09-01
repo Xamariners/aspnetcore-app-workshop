@@ -17,13 +17,27 @@ namespace FrontEnd.Pages
         public IndexModel(IApiClient apiClient)
         {
             _apiClient = apiClient;
+
+            GlobalConference = new GlobalConference
+            {
+                StartDate = new DateTime(2018,11,10),
+                Location = "Across the planet",
+                Name = "MonkeyFest 2018",
+                Summary = "Global Xamarin Bootcamp",
+                TagLine= "Xamarin Experts across the globe unite for one day"
+            };
+
         }
 
         public IEnumerable<IGrouping<DateTimeOffset?, SessionResponse>> Sessions { get; set; }
 
         public IEnumerable<(int Offset, DayOfWeek? DayofWeek, DateTime? Date)> DayOffsets { get; set; }
 
-        public List<int> UserSessions { get; set; }
+        public List<Guid> UserSessions { get; set; }
+
+        public GlobalConference GlobalConference { get; set; }
+
+        public List<Conference> Conferences { get; set; }
 
         public int CurrentDayOffset { get; set; }
 
@@ -35,16 +49,6 @@ namespace FrontEnd.Pages
         public string EventScheduleTitle => "EVENT SCHEDULE";
 
         public string EventScheduleDescription => "EVENT DESCRIPTION...";
-
-        public string GlobalEventDate => "10 November 2018";
-
-        public string GlobalEventAddress => "Across the planet";
-
-        public string GlobalEventName => "MonkeyFest 2018";
-
-        public string GlobalEventShortDescription => "Global Xamarin Bootcamp";
-
-        public string GlobalEventTagLine => "Xamarin Experts across the globe unite for one day";
 
         protected virtual Task<List<SessionResponse>> GetSessionsAsync()
         {
@@ -77,14 +81,14 @@ namespace FrontEnd.Pages
                                .OrderBy(g => g.Key);
         }
         
-        public async Task<IActionResult> OnPostAsync(int sessionId)
+        public async Task<IActionResult> OnPostAsync(Guid sessionId)
         {
             await _apiClient.AddSessionToAttendeeAsync(User.Identity.Name, sessionId);
 
             return RedirectToPage();
         }
 
-        public async Task<IActionResult> OnPostRemoveAsync(int sessionId)
+        public async Task<IActionResult> OnPostRemoveAsync(Guid sessionId)
         {
             await _apiClient.RemoveSessionFromAttendeeAsync(User.Identity.Name, sessionId);
 

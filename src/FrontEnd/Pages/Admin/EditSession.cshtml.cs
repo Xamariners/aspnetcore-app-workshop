@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using FrontEnd.Services;
 using FrontEnd.Pages.Models;
@@ -23,7 +24,7 @@ namespace FrontEnd.Pages
 
         public bool ShowMessage => !string.IsNullOrEmpty(Message);
 
-        public async Task OnGet(int id)
+        public async Task OnGet(Guid id)
         {
             var session = await _apiClient.GetSessionAsync(id);
             Session = new Session
@@ -52,7 +53,7 @@ namespace FrontEnd.Pages
             return RedirectToPage();
         }
 
-        public async Task<IActionResult> OnPostDeleteAsync(int id)
+        public async Task<IActionResult> OnPostDeleteAsync(Guid id)
         {
             var session = await _apiClient.GetSessionAsync(id);
 

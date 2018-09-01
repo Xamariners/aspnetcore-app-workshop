@@ -34,8 +34,8 @@ namespace BackEnd.Controllers
             return Ok(result);
         }
 
-        [HttpGet("{id:int}")]
-        public async Task<IActionResult> GetConference([FromRoute] int id)
+        [HttpGet("{id:Guid}")]
+        public async Task<IActionResult> GetConference([FromRoute] Guid id)
         {
             var conference = await _db.FindAsync<Conference>(id);
 
@@ -83,8 +83,8 @@ namespace BackEnd.Controllers
             return CreatedAtAction(nameof(GetConference), new { id = conference.ID }, result);
         }
 
-        [HttpPut("{id:int}")]
-        public async Task<IActionResult> UpdateConference([FromRoute]int id, [FromBody]ConferenceDTO.Conference input)
+        [HttpPut("{id:Guid}")]
+        public async Task<IActionResult> UpdateConference([FromRoute]Guid id, [FromBody]ConferenceDTO.Conference input)
         {
             var conference = await _db.FindAsync<Conference>(id);
 
@@ -114,8 +114,8 @@ namespace BackEnd.Controllers
             return Ok(result);
         }
 
-        [HttpDelete("{id:int}")]
-        public async Task<IActionResult> DeleteConference([FromRoute] int id)
+        [HttpDelete("{id:Guid}")]
+        public async Task<IActionResult> DeleteConference([FromRoute] Guid id)
         {
             var conference = await _db.FindAsync<Conference>(id);
 

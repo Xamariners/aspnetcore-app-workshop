@@ -25,7 +25,7 @@ namespace FrontEnd.Pages
 
         public int? DayOffset { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int id)
+        public async Task<IActionResult> OnGetAsync(Guid id)
         {
             Session = await _apiClient.GetSessionAsync(id);
 
@@ -52,14 +52,14 @@ namespace FrontEnd.Pages
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync(int sessionId)
+        public async Task<IActionResult> OnPostAsync(Guid sessionId)
         {
             await _apiClient.AddSessionToAttendeeAsync(User.Identity.Name, sessionId);
 
             return RedirectToPage();
         }
 
-        public async Task<IActionResult> OnPostRemoveAsync(int sessionId)
+        public async Task<IActionResult> OnPostRemoveAsync(Guid sessionId)
         {
             await _apiClient.RemoveSessionFromAttendeeAsync(User.Identity.Name, sessionId);
 

@@ -4,10 +4,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ConferenceDTO
 {
-    public class Attendee
+    public class Attendee : ObjectBase
     {
-        public int ID { get; set; }
-
         [Required]
         [StringLength(200)]
         public virtual string FirstName { get; set; }
