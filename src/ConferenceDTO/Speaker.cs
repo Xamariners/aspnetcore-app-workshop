@@ -10,16 +10,21 @@ namespace ConferenceDTO
         [StringLength(200)]
         public string Name { get; set; }
 
-        [StringLength(4000)]
+        [StringLength(10000)]
         public string Bio { get; set; }
 
-        [StringLength(30)]
+        [StringLength(200)]
         public string TagLine { get; set; }
 
         [StringLength(1000)]
         public virtual string WebSite { get; set; }
 
-        [StringLength(1000)]
+        [StringLength(100)]
+        public virtual string Twitter { get; set; }
+
+        [StringLength(100)]
+        public virtual string LinkedIn { get; set; }
+
         public virtual string Picture { get; set; }
 
     }

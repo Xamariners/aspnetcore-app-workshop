@@ -137,6 +137,26 @@ namespace FrontEnd.Services
             response.EnsureSuccessStatusCode();
         }
 
+        public async Task<List<Conference>> GetConferencesAsync()
+        {
+            var response = await _httpClient.GetAsync("/api/conferences");
+
+            response.EnsureSuccessStatusCode();
+
+            return await response.Content.ReadAsJsonAsync<List<Conference>>();
+        }
+
+        public async Task<GlobalConference> GetGlobalConferenceAsync()
+        {
+            var response = await _httpClient.GetAsync("/api/globalconference");
+
+            response.EnsureSuccessStatusCode();
+
+            var result = await response.Content.ReadAsJsonAsync<List<GlobalConference>>();
+
+            return result.FirstOrDefault();
+        }
+
         public async Task<List<SessionResponse>> GetSessionsByAttendeeAsync(string name)
         {
             // TODO: Would be better to add backend API for this

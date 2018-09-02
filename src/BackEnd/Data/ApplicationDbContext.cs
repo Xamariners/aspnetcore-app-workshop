@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ConferenceDTO;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore.Design;
@@ -43,6 +44,8 @@ namespace BackEnd.Data
                 .HasKey(st => new { st.SessionID, st.TagID });
         }
 
+        public DbSet<GlobalConference> GlobalConferences { get; set; }
+
         public DbSet<Conference> Conferences { get; set; }
 
         public DbSet<Session> Sessions { get; set; }
@@ -52,6 +55,8 @@ namespace BackEnd.Data
         public DbSet<Tag> Tags { get; set; }
 
         public DbSet<Speaker> Speakers { get; set; }
+
+        public DbSet<ConferenceOrganiser> ConferenceOrganisers { get; set; }
 
         public DbSet<Attendee> Attendees { get; set; }
     }

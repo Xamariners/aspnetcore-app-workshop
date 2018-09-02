@@ -11,15 +11,20 @@ namespace ConferenceDTO
         [StringLength(200)]
         public string Name { get; set; }
 
+        public string Description { get; set; }
+
         [Required]
         public string Address1 { get; set; }
 
         public string Address2 { get; set; }
 
+        [Required]
         public string PostCode { get; set; }
 
+        [Required]
         public string City { get; set; }
 
+        [Required]
         public string Country { get; set; }
 
         [Required]
@@ -27,6 +32,11 @@ namespace ConferenceDTO
 
         [Required]
         public decimal Longitude { get; set; }
+
+        [Required]
+        public DateTime StartDate { get; set; }
+
+        public DateTime? EndDate { get; set; }
 
     }
 }

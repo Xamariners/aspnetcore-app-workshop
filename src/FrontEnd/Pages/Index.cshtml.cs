@@ -12,21 +12,13 @@ namespace FrontEnd.Pages
 {
     public class IndexModel : PageModel
     {
+        // https://www.bing.com/api/maps/sdkrelease/mapcontrol/isdk/displayinfoboxonclickpushpin
+
         protected readonly IApiClient _apiClient;
 
         public IndexModel(IApiClient apiClient)
         {
             _apiClient = apiClient;
-
-            GlobalConference = new GlobalConference
-            {
-                StartDate = new DateTime(2018,11,10),
-                Location = "Across the planet",
-                Name = "MonkeyFest 2018",
-                Summary = "Global Xamarin Bootcamp",
-                TagLine= "Xamarin Experts across the globe unite for one day"
-            };
-
         }
 
         public IEnumerable<IGrouping<DateTimeOffset?, SessionResponse>> Sessions { get; set; }
@@ -55,9 +47,22 @@ namespace FrontEnd.Pages
             return _apiClient.GetSessionsAsync();
         }
 
+        protected virtual Task<List<Conference>> GetConferencesAsync()
+        {
+            return _apiClient.GetConferencesAsync();
+        }
+
+        protected virtual Task<GlobalConference> GetConferenceAsync()
+        {
+            return _apiClient.GetGlobalConferenceAsync();
+        }
+
         public async Task OnGetAsync(int day = 0)
         {
             CurrentDayOffset = day;
+
+            GlobalConference = await _apiClient.GetGlobalConferenceAsync();
+            Conferences = await _apiClient.GetConferencesAsync();
 
             var userSessions = await _apiClient.GetSessionsByAttendeeAsync(User.Identity.Name);
 

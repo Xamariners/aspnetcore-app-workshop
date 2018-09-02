@@ -20,5 +20,7 @@ namespace FrontEnd.Services
         Task DeleteSessionAsync(Guid id);
         Task AddSessionToAttendeeAsync(string name, Guid sessionId);
         Task RemoveSessionFromAttendeeAsync(string name, Guid sessionId);
+        Task<List<Conference>> GetConferencesAsync();
+        Task<GlobalConference> GetGlobalConferenceAsync();
     }
 }

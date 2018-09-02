@@ -23,13 +23,21 @@ namespace BackEnd.Controllers
         {
             var conferences = await _db.Conferences.AsNoTracking().ToListAsync();
 
-            var result = conferences.Select(s => new ConferenceDTO.ConferenceResponse
+            var result = conferences.Select(c => new ConferenceDTO.ConferenceResponse
             {
-                ID = s.ID,
-                Name = s.Name,
-                //Sessions = ??,
-                //Tracks = ??
-                //Sessions = ??
+                ID = c.ID,
+                Name = c.Name,
+                StartDate = c.StartDate,
+                Description = c.Description,
+                EndDate = c.EndDate,
+                Address1 = c.Address1,
+                Address2 = c.Address2,
+                City = c.City,
+                ConferenceOrganisers = c.ConferenceOrganisers,
+                Country = c.Country,
+                Latitude = c.Latitude,
+                Longitude = c.Longitude,
+                PostCode = c.PostCode,
             });
             return Ok(result);
         }
@@ -37,20 +45,28 @@ namespace BackEnd.Controllers
         [HttpGet("{id:Guid}")]
         public async Task<IActionResult> GetConference([FromRoute] Guid id)
         {
-            var conference = await _db.FindAsync<Conference>(id);
+            var c = await _db.FindAsync<Conference>(id);
 
-            if (conference == null)
+            if (c == null)
             {
                 return NotFound();
             }
             
             var result = new ConferenceDTO.ConferenceResponse
             {
-                ID = conference.ID,
-                Name = conference.Name,
-                //Sessions = ??,
-                //Tracks = ??
-                //Sessions = ??
+                ID = c.ID,
+                Name = c.Name,
+                StartDate = c.StartDate,
+                Description = c.Description,
+                EndDate = c.EndDate,
+                Address1 = c.Address1,
+                Address2 = c.Address2,
+                City = c.City,
+                ConferenceOrganisers = c.ConferenceOrganisers,
+                Country = c.Country,
+                Latitude = c.Latitude,
+                Longitude = c.Longitude,
+                PostCode = c.PostCode,
             };
             return Ok(result);
         }
@@ -63,32 +79,50 @@ namespace BackEnd.Controllers
                 return BadRequest(ModelState);
             }
 
-            var conference = new Conference
-            {
-                Name = input.Name
+            var c = new Conference
+            {  
+                Name = input.Name,
+                StartDate = input.StartDate,
+                Description = input.Description,
+                EndDate = input.EndDate,
+                Address1 = input.Address1,
+                Address2 = input.Address2,
+                City = input.City,
+                Country = input.Country,
+                Latitude = input.Latitude,
+                Longitude = input.Longitude,
+                PostCode = input.PostCode,
             };
 
-            _db.Conferences.Add(conference);
+            _db.Conferences.Add(c);
             await _db.SaveChangesAsync();
 
             var result = new ConferenceDTO.ConferenceResponse
             {
-                ID = conference.ID,
-                Name = conference.Name,
-                //Sessions = ??,
-                //Tracks = ??
-                //Sessions = ??
+                ID = c.ID,
+                Name = c.Name,
+                StartDate = c.StartDate,
+                Description = c.Description,
+                EndDate = c.EndDate,
+                Address1 = c.Address1,
+                Address2 = c.Address2,
+                City = c.City,
+                ConferenceOrganisers = c.ConferenceOrganisers,
+                Country = c.Country,
+                Latitude = c.Latitude,
+                Longitude = c.Longitude,
+                PostCode = c.PostCode,
             };
 
-            return CreatedAtAction(nameof(GetConference), new { id = conference.ID }, result);
+            return CreatedAtAction(nameof(GetConference), new { id = c.ID }, result);
         }
 
         [HttpPut("{id:Guid}")]
         public async Task<IActionResult> UpdateConference([FromRoute]Guid id, [FromBody]ConferenceDTO.Conference input)
         {
-            var conference = await _db.FindAsync<Conference>(id);
+            var c = await _db.FindAsync<Conference>(id);
 
-            if (conference == null)
+            if (c == null)
             {
                 return NotFound();
             }
@@ -98,17 +132,25 @@ namespace BackEnd.Controllers
                 return BadRequest(ModelState);
             }
 
-            conference.Name = input.Name;
+            c.Name = input.Name;
 
             await _db.SaveChangesAsync();
 
             var result = new ConferenceDTO.ConferenceResponse
             {
-                ID = conference.ID,
-                Name = conference.Name,
-                //Sessions = ??,
-                //Tracks = ??
-                //Sessions = ??
+                ID = c.ID,
+                Name = c.Name,
+                StartDate = c.StartDate,
+                Description = c.Description,
+                EndDate = c.EndDate,
+                Address1 = c.Address1,
+                Address2 = c.Address2,
+                City = c.City,
+                ConferenceOrganisers = c.ConferenceOrganisers,
+                Country = c.Country,
+                Latitude = c.Latitude,
+                Longitude = c.Longitude,
+                PostCode = c.PostCode,
             };
 
             return Ok(result);
