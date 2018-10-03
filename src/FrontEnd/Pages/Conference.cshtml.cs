@@ -73,10 +73,15 @@ namespace FrontEnd.Pages
                                .OrderBy(s => s.TrackId)
                                .GroupBy(s => s.StartTime)
                                .OrderBy(g => g.Key);
-            
+
+            var cats = sessions
+                .Select(s => new { s.Speakers, s..category_name })
+                .Distinct()
+                .OrderByDescending(i => i.category_name)
+                .ToArray();
+
             Speakers = sessions.SelectMany(x => x.Speakers).OrderBy(x => x.Order);
         }
-
         
 
         public async Task<IActionResult> OnPostAsync(Guid sessionId)

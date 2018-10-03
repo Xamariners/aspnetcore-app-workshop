@@ -45,7 +45,7 @@
 
             @{int i = 0;}
 
-            @foreach (var speaker in Model.Sessions..Speakers)
+            @foreach (var speaker in Model.Speakers)
             {
                 // every 4
                 if (i % 4 == 0 || i == 0)
@@ -73,7 +73,7 @@
                                     <a asp-page="Speaker" asp-route-id="@speaker.ID" class="display-block color-black font-weight-600 text-medium-22 text-transform-capitalize margin-bottom-5">@speaker.Name</a>
                                     <span class="color-bright-gray font-weight-400 text-small-16 margin-bottom-15 display-block">Onvallis nec quis ligula</span>
 
-                                    @foreach (var session in speaker.Sessions)
+                                    @foreach (var session in Model.Sessions..Where(x => x.) speaker.Sessions)
                                     {
                                         <p class="color-black padding-right-50 text-small-16 font-weight-600 no-margin-bottom"><a asp-page="Session" asp-route-id="@session.ID">@session.Title</a></p>
                                     }

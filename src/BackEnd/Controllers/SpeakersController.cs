@@ -47,6 +47,24 @@ namespace BackEnd.Controllers
             return Ok(result);
         }
 
+        [HttpGet("conference/{id:Guid}")]
+        public async Task<IActionResult> GetConferenceSpeakers([FromRoute]Guid id)
+        {
+            var speaker = await _db.Speakers.AsNoTracking()
+                .Include(s => s.SessionSpeakers)
+                .ThenInclude(ss => ss.Session).ToListAsync();
+
+            speaker.Where(x => x.SessionSpeakers.Any(y => y.SessionId == id));
+
+            if (speaker == null)
+            {
+                return NotFound();
+            }
+
+            var result = speaker.MapSpeakerResponse();
+            return Ok(result);
+        }
+
         [HttpPost]
         public async Task<IActionResult> CreateSpeaker([FromBody]ConferenceDTO.Speaker input)
         {
