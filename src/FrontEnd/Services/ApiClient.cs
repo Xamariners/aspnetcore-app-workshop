@@ -102,6 +102,15 @@ namespace FrontEnd.Services
             return await response.Content.ReadAsJsonAsync<List<SpeakerResponse>>();
         }
 
+        public async Task<List<SpeakerResponse>> GetConferenceSpeakersAsync(Guid id)
+        {
+            var response = await _httpClient.GetAsync("/api/speakers/conference/{id}");
+
+            response.EnsureSuccessStatusCode();
+
+            return await response.Content.ReadAsJsonAsync<List<SpeakerResponse>>();
+        }
+
         public async Task PutSessionAsync(Session session)
         {
             var response = await _httpClient.PutJsonAsync($"/api/sessions/{session.ID}", session);
@@ -155,6 +164,15 @@ namespace FrontEnd.Services
             var result = await response.Content.ReadAsJsonAsync<List<GlobalConference>>();
 
             return result.FirstOrDefault();
+        }
+
+        public async Task<Conference> GetConferenceAsync(Guid id)
+        {
+            var response = await _httpClient.GetAsync($"/api/conferences/{id}");
+
+            response.EnsureSuccessStatusCode();
+
+            return await response.Content.ReadAsJsonAsync<ConferenceResponse>();
         }
 
         public async Task<List<SessionResponse>> GetSessionsByAttendeeAsync(string name)

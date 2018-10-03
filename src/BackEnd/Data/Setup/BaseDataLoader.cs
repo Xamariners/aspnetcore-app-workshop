@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Microsoft.Extensions.DependencyInjection;
 using BackEnd.Data;
 
-namespace BackEnd
+namespace BackEnd.Data.Setup
 {
     public abstract class BaseDataLoader
     {

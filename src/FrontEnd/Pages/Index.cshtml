@@ -1,7 +1,7 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = Model.GlobalConference.Name;
 }
 
 
@@ -35,7 +35,6 @@
 <!-- Banner End -->
 
 <!-- Event List / Map Start -->
-
 <section id="contact" class="upcoming-event-style-1 upcoming-event-section width-100 float-left padding-tb-73-80 position-relative text-align-center">
     <div class="container-fluid overflow-hidden wow fadeInUp" data-wow-delay="0.5s">
         <h2 class="text-large-40 text-transform-uppercase font-weight-600 color-black">Events</h2>
@@ -46,7 +45,6 @@
     </div>
 </section>
 <!-- Event List / Map Ends -->
-
 
 <!-- Sponsors start -->
 <section id="sponsers" class="logoshowcase-style-2 md-logoshowcase-section text-align-center width-100 padding-tb-73-50 display-inline-block header-bg">

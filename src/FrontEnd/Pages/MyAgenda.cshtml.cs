@@ -7,7 +7,7 @@ using FrontEnd.Services;
 
 namespace FrontEnd.Pages
 {
-    public class MyAgendaModel : IndexModel
+    public class MyAgendaModel : ConferenceModel
     {
         public MyAgendaModel(IApiClient client)
             : base(client)

@@ -22,5 +22,6 @@ namespace FrontEnd.Services
         Task RemoveSessionFromAttendeeAsync(string name, Guid sessionId);
         Task<List<Conference>> GetConferencesAsync();
         Task<GlobalConference> GetGlobalConferenceAsync();
+        Task<Conference> GetConferenceAsync(Guid id);
     }
 }

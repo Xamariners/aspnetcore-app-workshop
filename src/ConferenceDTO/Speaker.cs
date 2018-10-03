@@ -16,6 +16,8 @@ namespace ConferenceDTO
         [StringLength(200)]
         public string TagLine { get; set; }
 
+        public int Order { get; set; }
+
         [StringLength(1000)]
         public virtual string WebSite { get; set; }
 

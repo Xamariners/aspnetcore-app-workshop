@@ -25,11 +25,11 @@ namespace FrontEnd.Pages
 
         public IEnumerable<(int Offset, DayOfWeek? DayofWeek, DateTime? Date)> DayOffsets { get; set; }
 
+        public IOrderedEnumerable<Speaker> Speakers { get; set; }
+
         public List<Guid> UserSessions { get; set; }
 
-        public GlobalConference GlobalConference { get; set; }
-
-        public List<Conference> Conferences { get; set; }
+        public Conference Conference { get; set; }
 
         public int CurrentDayOffset { get; set; }
 
@@ -46,23 +46,12 @@ namespace FrontEnd.Pages
         {
             return _apiClient.GetSessionsAsync();
         }
-
-        protected virtual Task<List<Conference>> GetConferencesAsync()
-        {
-            return _apiClient.GetConferencesAsync();
-        }
-
-        protected virtual Task<GlobalConference> GetConferenceAsync()
-        {
-            return _apiClient.GetGlobalConferenceAsync();
-        }
-
-        public async Task OnGetAsync(int day = 0)
+        
+        public async Task OnGetAsync(Guid id, int day = 0)
         {
             CurrentDayOffset = day;
-
-            GlobalConference = await _apiClient.GetGlobalConferenceAsync();
-            Conferences = await _apiClient.GetConferencesAsync();
+            
+            Conference = await _apiClient.GetConferenceAsync(id);
 
             var userSessions = await _apiClient.GetSessionsByAttendeeAsync(User.Identity.Name);
 
@@ -84,8 +73,12 @@ namespace FrontEnd.Pages
                                .OrderBy(s => s.TrackId)
                                .GroupBy(s => s.StartTime)
                                .OrderBy(g => g.Key);
+            
+            Speakers = sessions.SelectMany(x => x.Speakers).OrderBy(x => x.Order);
         }
+
         
+
         public async Task<IActionResult> OnPostAsync(Guid sessionId)
         {
             await _apiClient.AddSessionToAttendeeAsync(User.Identity.Name, sessionId);
