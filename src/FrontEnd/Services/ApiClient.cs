@@ -101,13 +101,14 @@ namespace FrontEnd.Services
 
             return await response.Content.ReadAsJsonAsync<List<SpeakerResponse>>();
         }
-
+        
         public async Task<List<SpeakerResponse>> GetConferenceSpeakersAsync(Guid id)
         {
-            var response = await _httpClient.GetAsync("/api/speakers/conference/{id}");
+            var response = await _httpClient.GetAsync($"/api/speakers/conference/{id}");
 
             response.EnsureSuccessStatusCode();
 
+            var bob = await response.Content.ReadAsStringAsync();
             return await response.Content.ReadAsJsonAsync<List<SpeakerResponse>>();
         }
 

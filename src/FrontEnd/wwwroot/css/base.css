@@ -1,4 +1,4 @@
-@charset "utf-8";
+﻿@charset "utf-8";
 
 /* ----------------------------------
 
@@ -477,6 +477,17 @@ h6 { font-size:14px; line-height:27px}
 .bg-sapphire-blue { background-color: #00194c; }
 
 /* gradient background color */
+
+linear-gradient(180deg, rgba(243, 119, 62, 1) 0%, rgba(148, 79, 159, 1) 100%)
+.gradient-orange-pink {
+    background: -moz-linear-gradient(180deg, rgba(243, 119, 62, 1) 0%, rgba(148, 79, 159, 1) 100%); /* ff3.6+ */
+    background: -webkit-gradient(linear, left bottom, right top, color-stop(0%, rgba(243, 119, 62, 1)), color-stop(100%, rgba(148, 79, 159, 1))); /* safari4+,chrome */
+    background: -webkit-linear-gradient(180deg, rgba(243, 119, 62, 1) 0%, rgba(148, 79, 159, 1) 100%); /* safari5.1+,chrome10+ */
+    background: -o-linear-gradient(180deg, rgba(243, 119, 62, 1) 0%, rgba(148, 79, 159, 1) 100%); /* opera 11.10+ */
+    background: -ms-linear-gradient(180deg, rgba(243, 119, 62, 1) 0%, rgba(148, 79, 159, 1) 100%); /* ie10+ */
+    background: linear-gradient(42deg, rgba(243, 119, 62, 1) 0%, rgba(148, 79, 159, 1) 100%); /* w3c */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#944f9f', endColorstr='#f3773e',GradientType=0 ); /* ie6-9 */ 
+}
 .gradient-pink-purple {
     background: rgba(163, 64, 255, 0.9);
     background: -moz-linear-gradient(45deg, rgba(163,64,255,0.9) 0%, rgba(163,64,255,0.9) 20%, rgba(163,64,255,0.9) 12%, rgba(255,58,81,0.9) 85%, rgba(255,58,81,0.9) 91%, rgba(255,58,81,0.9) 100%);

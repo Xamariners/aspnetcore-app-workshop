@@ -50,18 +50,13 @@ namespace BackEnd.Controllers
         [HttpGet("conference/{id:Guid}")]
         public async Task<IActionResult> GetConferenceSpeakers([FromRoute]Guid id)
         {
-            var speaker = await _db.Speakers.AsNoTracking()
+            var speakers = await _db.Speakers.AsNoTracking()
                 .Include(s => s.SessionSpeakers)
-                .ThenInclude(ss => ss.Session).ToListAsync();
+                .ThenInclude(ss => ss.Session)
+                .Where(x => x.SessionSpeakers.Any(y => y.Session.ConferenceID == id))
+                .ToListAsync();
 
-            speaker.Where(x => x.SessionSpeakers.Any(y => y.SessionId == id));
-
-            if (speaker == null)
-            {
-                return NotFound();
-            }
-
-            var result = speaker.MapSpeakerResponse();
+            var result = speakers.Select(s => s.MapSpeakerResponse());
             return Ok(result);
         }
 

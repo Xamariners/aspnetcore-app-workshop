@@ -12,6 +12,7 @@ namespace FrontEnd.Services
         Task<List<SessionResponse>> GetSessionsAsync();
         Task<SessionResponse> GetSessionAsync(Guid id);
         Task<List<SpeakerResponse>> GetSpeakersAsync();
+        Task<List<SpeakerResponse>> GetConferenceSpeakersAsync(Guid id);
         Task<SpeakerResponse> GetSpeakerAsync(Guid id);
         Task PutSessionAsync(Session session);
         Task<List<SearchResult>> SearchAsync(string query);

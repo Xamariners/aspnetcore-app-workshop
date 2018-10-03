@@ -14,19 +14,21 @@
 }
 
 <!-- Banner start -->
-<section class="banner-style-1 md-header-banner text-align-center position-relative cover-background" style="background-image: url(/images/monkeyfest_back.webp);">
-    <div class="md-color-overlay gradient-pink-purple"></div>
+<section class="banner-style-1 md-header-banner text-align-center position-relative cover-background" style="background-image: url(/images/background_image.jpg);">
+    <div class="md-color-overlay gradient-orange-pink"></div>
     <div class="jumbotron bg-transparent height-100 position-relative">
         <div class="container height-100">
             <div class="md-banner-content margin-lr-auto wow fadeInUp" data-wow-delay="0.5s">
                 <div class="md-bannertext-img md-banner-content-cell-middle height-100">
                     <div class="banner-event-date-venue color-white font-weight-600 text-small-16 position-relative display-table margin-lr-auto margin-bottom-35">
-                        <span class="event-date display-inline-block position-relative"><i class="fa fa-calendar" aria-hidden="true"></i> @Model.GlobalConference.StartDate.ToLongDateString() </span><span class="event-venue display-inline-block position-relative"><i class="fa fa-map-o" aria-hidden="true"></i> @Model.GlobalConference.Location</span>
+                        <span class="event-date display-inline-block position-relative editContent" id="dt-head2-1" style="color:rgb(255, 255, 255);font-size:16px;background-color:rgba(0, 0, 0, 0);font-family:Poppins, sans-serif;font-weight:600;text-transform:none;"><i class="fa fa-calendar icon-style" aria-hidden="true"></i> @Model.GlobalConference.StartDate.ToLongDateString()</span>
+                        <span class="event-venue display-inline-block position-relative editContent" id="dt-head2-2"><i class="fa fa-map-o icon-style" aria-hidden="true"></i>@Model.GlobalConference.Location</span>
                     </div>
-                    <h1 class="text-extra-large-90 color-white font-weight-600 text-transform-uppercase margin-bottom-25"><span class="display-block text-medium-22 color-white font-weight-600 text-transform-uppercase margin-bottom-30">@Model.GlobalConference.Name</span>@Model.GlobalConference.Description</h1>
-                    <h5 class=" display-table margin-lr-auto text-medium-22 color-white font-weight-600 text-transform-uppercase margin-bottom-30 position-relative line-left-right">@Model.GlobalConference.TagLine</h5>
-                    <div id="timer-clock-style-3" class="event-time-counter margin-bottom-80 width-100" data-timer="1000"></div>
-                    <a class="btn bg-white color-black margin-lr-15" href="#">Register</a><a class="btn empty-btn white-btn margin-lr-15" href="#">Read More</a>
+                    <h1 class="text-extra-large-90 color-white font-weight-600 text-transform-uppercase margin-bottom-25 editContent" id="dt-head2-title-1" style="color:rgb(255, 255, 255);font-size:90px;background-color:rgba(0, 0, 0, 0);font-family:Poppins, sans-serif;font-weight:600;text-transform:uppercase;"><span class="display-block text-medium-22 color-white font-weight-600 text-transform-uppercase margin-bottom-30 ">@Model.GlobalConference.Summary &nbsp;</span>@Model.GlobalConference.Name</h1>
+                    <h5 class=" display-table margin-lr-auto text-medium-22 color-white font-weight-600 text-transform-uppercase margin-bottom-30 position-relative line-left-right editContent" id="dt-head2-title-2">@Model.GlobalConference.TagLine</h5>
+                    <div class="timer-3 event-time-counter margin-bottom-80 width-100" data-timer="1000" id="dt-head2-timer-1"></div>
+                    <a class="btn bg-white color-black margin-lr-15" href="#" id="dt-head2-btn-1">Find Event</a>
+                    <a class="btn empty-btn white-btn margin-lr-15" href="#" id="dt-head2-btn-2">Read More</a>
                 </div>
             </div>
         </div>
@@ -35,9 +37,10 @@
 <!-- Banner End -->
 
 <!-- Event List / Map Start -->
-<section id="contact" class="upcoming-event-style-1 upcoming-event-section width-100 float-left padding-tb-73-80 position-relative text-align-center">
+<section id="contact" class="upcoming-event-style-1 upcoming-event-section width-100 float-left padding-tb-73-80 position-relative text-align-center"  style="background-color: rgb(235, 233, 226)">
     <div class="container-fluid overflow-hidden wow fadeInUp" data-wow-delay="0.5s">
-        <h2 class="text-large-40 text-transform-uppercase font-weight-600 color-black">Events</h2>
+        <h2 class="text-large-40 text-transform-uppercase font-weight-600 color-black">@Model.Conferences.Count.ToString() Events</h2>
+        <h5 class="font-weight-300 text-medium-22 margin-bottom-45 color-bright-gray editContent">Pick an event near you on the map below</h5>
         <div class="row">
             <div class="md-map" id="events-map">
             </div>
@@ -49,8 +52,8 @@
 <!-- Sponsors start -->
 <section id="sponsers" class="logoshowcase-style-2 md-logoshowcase-section text-align-center width-100 padding-tb-73-50 display-inline-block header-bg">
     <div class="container wow fadeInUp" data-wow-delay="0.5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInUp;">
-        <h2 class="text-large-40 text-transform-uppercase font-weight-600 color-black editContent" id="dt-partner2-title-1">Events sponsors</h2>
-        <h5 class="font-weight-300 text-medium-22 margin-bottom-45 color-bright-gray editContent" id="dt-partner2-title-2">Alteration in some form, by injected hu randomised</h5>
+        <h2 class="text-large-40 text-transform-uppercase font-weight-600 color-black editContent" id="dt-partner2-title-1">Global Event Sponsors</h2>
+        <h5 class="font-weight-300 text-medium-22 margin-bottom-45 color-bright-gray editContent" id="dt-partner2-title-2">Thanks to them, we got the events up and running</h5>
         <div class="logo-slider row">
             <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
                 <div class="logo-image border-dim-gray bg-white margin-bottom-30">
@@ -65,6 +68,11 @@
             <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
                 <div class="logo-image border-dim-gray bg-white margin-bottom-30">
                     <img class="linear-transition opacity-30" src="http://placehold.it/214x85" id="dt-partner2-img-3" alt="Logo 3">
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+                <div class="logo-image border-dim-gray bg-white margin-bottom-30">
+                    <img class="linear-transition opacity-30" src="http://placehold.it/214x85" id="dt-partner2-img-4" alt="Logo 4">
                 </div>
             </div>
         </div>
@@ -90,5 +98,18 @@
             }
             return requestData;
         }
+
+        /* Countdown Timer */
+        $('#timer-clock-style-3').simplyCountdown({
+            year: "@Model.GlobalConference.StartDate.Year",
+            month: "@Model.GlobalConference.StartDate.Month",
+            day: "@Model.GlobalConference.StartDate.Day",
+            inlineClass: 'simply-countdown-inline',
+            sectionClass: 'hexagonal-rounded-edge',
+            amountClass: 'counter-day-number',
+            wordClass: 'counter-words',
+            enableUtc: true,
+        });
+
     </script>
 }

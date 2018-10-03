@@ -14,8 +14,8 @@
 }
 
 <!-- Banner start -->
-<section class="banner-style-1 md-header-banner text-align-center position-relative cover-background" style="background-image: url(/images/monkeyfest_back.webp);">
-    <div class="md-color-overlay gradient-pink-purple"></div>
+<section class="banner-style-1 md-header-banner text-align-center position-relative cover-background" style="background-image: url(/images/background_image.jpg);">
+    <div class="md-color-overlay gradient-orange-pink"></div>
     <div class="jumbotron bg-transparent height-100 position-relative">
         <div class="container height-100">
             <div class="md-banner-content margin-lr-auto wow fadeInUp" data-wow-delay="0.5s">
@@ -26,76 +26,73 @@
                     <h1 class="text-extra-large-90 color-white font-weight-600 text-transform-uppercase margin-bottom-25"><span class="display-block text-medium-22 color-white font-weight-600 text-transform-uppercase margin-bottom-30">@Model.Conference.Name</span>@Model.Conference.Description</h1>
                     <h5 class=" display-table margin-lr-auto text-medium-22 color-white font-weight-600 text-transform-uppercase margin-bottom-30 position-relative line-left-right">@Model.Conference.Description</h5>
                     <div id="timer-clock-style-3" class="event-time-counter margin-bottom-80 width-100" data-timer="1000"></div>
-                    <a class="btn bg-white color-black margin-lr-15" href="#">Register</a><a class="btn empty-btn white-btn margin-lr-15" href="#">Read More</a>
+                    <a class="btn bg-white color-black margin-lr-15" href="@Model.Conference.Registration">Register</a><a class="btn empty-btn white-btn margin-lr-15" href="#">Read More</a>
                 </div>
             </div>
         </div>
     </div>
 </section>
 <!-- Banner End -->
-
 <!-- Speaker Start -->
-<section id="speakers" class="team-style-3 speaker-section text-align-left width-100 float-left padding-tb-73-92" style="background-image: url(/images/monkeyfest_back.webp);">
-    <div class="md-color-overlay gradient-pink-purple"></div>
+<section id="speakers" class="team-style-3 speaker-section text-align-left width-100 float-left padding-tb-73-92">
     <div class="container wow fadeInUp" data-wow-delay="0.5s">
         <h2 class="text-large-40 text-transform-uppercase font-weight-600 color-black">Speakers</h2>
-        <h5 class="color-bright-gray font-weight-300 text-medium-22 margin-bottom-43">Randomised words which don't look slightly</h5>
+        <h5 class="color-bright-gray font-weight-300 text-medium-22 margin-bottom-43">The best of the best</h5>
 
         <div class="team-slider-style-3 speaker-slider dot-style-1 small-dot black-red-dot position-left-dot row">
 
-            @{int i = 0;}
+        @{int i = 0;}
 
-            @foreach (var speaker in Model.Speakers)
+        @foreach (var speaker in Model.Speakers)
+        {
+            // every 4
+            if (i % 4 == 0 || i == 0)
             {
-                // every 4
-                if (i % 4 == 0 || i == 0)
-                {
-                    @:<div class="speaker-slides">
-                    }
+            @:<div class="speaker-slides">
+            }
 
-                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 margin-bottom-50 @((i % 2 == 0 && i > 1) ? "clear-both" : "")">
-                        <div class="flex-container display-flex row">
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <div class="speaker-image width-100 position-relative">
-                                    <img class="border-radius-3 img-object-fit-cover img100 height-100" src="http://placehold.it/524x546" alt="Speaker Image" />
-                                    <div class="social-media-icons white-gray-icon small-icon-20 gradient-pink-purple position-absolute height-100 width-100 position-top display-table border-radius-3 linear-transition opacity-0">
-                                        <ul class="md-person-social list-group text-align-center display-table-cell-vertical-middle">
-                                            <li class="list-group-item"><a href="#" target="_blank"><span><i class="fa fa-facebook-f" aria-hidden="true"></i></span></a></li>
-                                            <li class="list-group-item"><a href="#" target="_blank"><span><i class="fa fa-twitter" aria-hidden="true"></i></span></a></li>
-                                            <li class="list-group-item"><a href="#" target="_blank"><span><i class="fa fa-google-plus" aria-hidden="true"></i></span></a></li>
-                                            <li class="list-group-item"><a href="#" target="_blank"><span><i class="fa fa-linkedin" aria-hidden="true"></i></span></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <div class="speaker-content">
-                                    <a asp-page="Speaker" asp-route-id="@speaker.ID" class="display-block color-black font-weight-600 text-medium-22 text-transform-capitalize margin-bottom-5">@speaker.Name</a>
-                                    <span class="color-bright-gray font-weight-400 text-small-16 margin-bottom-15 display-block">Onvallis nec quis ligula</span>
-
-                                    @foreach (var session in Model.Sessions..Where(x => x.) speaker.Sessions)
-                                    {
-                                        <p class="color-black padding-right-50 text-small-16 font-weight-600 no-margin-bottom"><a asp-page="Session" asp-route-id="@session.ID">@session.Title</a></p>
-                                    }
-
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 margin-bottom-50 @((i % 2 == 0 && i > 1) ? "clear-both" : "")">
+                    <div class="flex-container display-flex row">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <div class="speaker-image width-100 position-relative">
+                                <img class="border-radius-3 img-object-fit-cover img100 height-100" src="http://placehold.it/524x546" alt="Speaker Image" />
+                                <div class="social-media-icons white-gray-icon small-icon-20 gradient-orange-pink position-absolute height-100 width-100 position-top display-table border-radius-3 linear-transition opacity-0">
+                                    <ul class="md-person-social list-group text-align-center display-table-cell-vertical-middle">
+                                        <li class="list-group-item"><a href="#" target="_blank"><span><i class="fa fa-facebook-f" aria-hidden="true"></i></span></a></li>
+                                        <li class="list-group-item"><a href="#" target="_blank"><span><i class="fa fa-twitter" aria-hidden="true"></i></span></a></li>
+                                        <li class="list-group-item"><a href="#" target="_blank"><span><i class="fa fa-google-plus" aria-hidden="true"></i></span></a></li>
+                                        <li class="list-group-item"><a href="#" target="_blank"><span><i class="fa fa-linkedin" aria-hidden="true"></i></span></a></li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <div class="speaker-content">
+                                <a asp-page="Speaker" asp-route-id="@speaker.ID" class="display-block color-black font-weight-600 text-medium-22 text-transform-capitalize margin-bottom-5">@speaker.Name</a>
+                                <span class="color-bright-gray font-weight-400 text-small-16 margin-bottom-15 display-block">Onvallis nec quis ligula</span>
+
+                                @foreach (var session in speaker.Sessions)
+                                {
+                                    <p class="color-black padding-right-50 text-small-16 font-weight-600 no-margin-bottom"><a asp-page="Session" asp-route-id="@session.ID">@session.Title</a></p>
+                                }
+
+                            </div>
+                        </div>
                     </div>
+                </div>
 
-                    if ((i + 1) % 4 == 0 || (i + 1) == Model.Speakers.Count())
-                    {
-                    @:</div>
-                }
-
-                i++;
+            if ((i + 1) % 4 == 0 || (i + 1) == Model.Speakers.Count())
+            {
+            @:</div>
             }
+
+            i++;
+        }
 
         </div>
     </div>
 </section>
 <!-- Speaker End -->
-
 <!-- Agenda Start -->
 <section id="schedule" class="upcoming-event-style-1 upcoming-event-section width-100 float-left padding-tb-73-80 position-relative text-align-center">
     <div class="container overflow-hidden wow fadeInUp" data-wow-delay="0.5s">
@@ -183,15 +180,13 @@
     </div>
 </section>
 <!-- Agenda End -->
-
 <!-- Conference Details / Map Start -->
-<section id="contact" class="contactus-style-2 md-contactus bg-white position-relative width-100">
+<section id="contact" class="contactus-style-2 md-contactus position-relative width-100 float-left" style="background-color: rgb(235, 233, 226)">
     <div class="container-fluid wow fadeInUp" data-wow-delay="0.5s">
         <div class="row">
             <div class="flex-container display-flex">
                 <div class="col-lg-5 col-md-12 col-sm-12 col-xs-12 no-padding-lr">
                     <div class="md-map" id="events-map">
-
                     </div>
                 </div>
                 <div class="col-lg-7 col-md-12 col-sm-12 col-xs-12">
@@ -297,6 +292,18 @@
             }
             return requestData;
         }
+
+        /* Countdown Timer */
+        $('#timer-clock-style-3').simplyCountdown({
+            year: "@Model.Conference.StartDate.Year",
+            month: "@Model.Conference.StartDate.Month",
+            day: "@Model.Conference.StartDate.Day",
+            inlineClass: 'simply-countdown-inline',
+            sectionClass: 'hexagonal-rounded-edge',
+            amountClass: 'counter-day-number',
+            wordClass: 'counter-words',
+            enableUtc: true,
+        });
 
     </script>
 

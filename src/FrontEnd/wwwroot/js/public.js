@@ -842,8 +842,8 @@ var viewportWidth = $(window).width();
   /* Countdown Timer */
   $('#timer-clock-style-1').simplyCountdown({
     year: "2018",
-    month: "07",
-    day: "15",
+    month: "11",
+    day: "10",
     inlineClass: 'simply-countdown-inline',
     sectionClass: 'simple-time-counter',
     amountClass: 'counter-day-number',
@@ -851,17 +851,17 @@ var viewportWidth = $(window).width();
     enableUtc: true,
   });
 
-  /* Countdown Timer */
-  $('#timer-clock-style-3').simplyCountdown({
-    year: "2018",
-    month: "07",
-    day: "15",
-    inlineClass: 'simply-countdown-inline',
-    sectionClass: 'hexagonal-rounded-edge',
-    amountClass: 'counter-day-number',
-    wordClass: 'counter-words',
-    enableUtc: true,
-  });
+  ///* Countdown Timer */
+  //$('#timer-clock-style-3').simplyCountdown({
+  //  year: "2018",
+  //  month: "11",
+  //  day: "10",
+  //  inlineClass: 'simply-countdown-inline',
+  //  sectionClass: 'hexagonal-rounded-edge',
+  //  amountClass: 'counter-day-number',
+  //  wordClass: 'counter-words',
+  //  enableUtc: true,
+  //});
 
   /* Isoptop multiple filters */
 // Define containers for filter data

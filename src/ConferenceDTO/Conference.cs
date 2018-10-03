@@ -36,6 +36,9 @@ namespace ConferenceDTO
         [Required]
         public DateTime StartDate { get; set; }
 
+        [Required]
+        public string Registration { get; set; }
+
         public DateTime? EndDate { get; set; }
 
     }

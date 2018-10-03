@@ -6,12 +6,11 @@
 }
 
 
-<!-- Speaker Start -->
-<section id="speakers" class="team-style-3 speaker-section text-align-left width-100 float-left padding-tb-73-92" style="background-image: url(/images/monkeyfest_back.webp);">
-    <div class="md-color-overlay gradient-pink-purple"></div>
+<<!-- Speaker Start -->
+<section id="speakers" class="team-style-3 speaker-section text-align-left width-100 float-left padding-tb-73-92" style="background-image: linear-gradient(rgb(243, 119, 62) 0%, rgb(148, 79, 159) 100%)">
     <div class="container wow fadeInUp" data-wow-delay="0.5s">
         <h2 class="text-large-40 text-transform-uppercase font-weight-600 color-black">Speakers</h2>
-        <h5 class="color-bright-gray font-weight-300 text-medium-22 margin-bottom-43">Randomised words which don't look slightly</h5>
+        <h5 class="font-weight-300 text-medium-22 margin-bottom-43">The best of the best</h5>
 
         <div class="team-slider-style-3 speaker-slider dot-style-1 small-dot black-red-dot position-left-dot row">
 
@@ -23,40 +22,40 @@
                 if (i % 4 == 0 || i == 0)
                 {
                     @:<div class="speaker-slides">
-                }
+                    }
 
-                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 margin-bottom-50 @((i % 2 == 0 && i > 1) ? "clear-both" : "")">
-                    <div class="flex-container display-flex row">
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <div class="speaker-image width-100 position-relative">
-                                <img class="border-radius-3 img-object-fit-cover img100 height-100" src="http://placehold.it/524x546" alt="Speaker Image"/>
-                                <div class="social-media-icons white-gray-icon small-icon-20 gradient-pink-purple position-absolute height-100 width-100 position-top display-table border-radius-3 linear-transition opacity-0">
-                                    <ul class="md-person-social list-group text-align-center display-table-cell-vertical-middle">
-                                        <li class="list-group-item"><a href="#" target="_blank"><span><i class="fa fa-facebook-f" aria-hidden="true"></i></span></a></li>
-                                        <li class="list-group-item"><a href="#" target="_blank"><span><i class="fa fa-twitter" aria-hidden="true"></i></span></a></li>
-                                        <li class="list-group-item"><a href="#" target="_blank"><span><i class="fa fa-google-plus" aria-hidden="true"></i></span></a></li>
-                                        <li class="list-group-item"><a href="#" target="_blank"><span><i class="fa fa-linkedin" aria-hidden="true"></i></span></a></li>
-                                    </ul>
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 margin-bottom-50 @((i % 2 == 0 && i > 1) ? "clear-both" : "")">
+                        <div class="flex-container display-flex row">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <div class="speaker-image width-100 position-relative">
+                                    <img class="border-radius-3 img-object-fit-cover img100 height-100" src="http://placehold.it/524x546" alt="Speaker Image" />
+                                    <div class="social-media-icons white-gray-icon small-icon-20 gradient-orange-pink position-absolute height-100 width-100 position-top display-table border-radius-3 linear-transition opacity-0">
+                                        <ul class="md-person-social list-group text-align-center display-table-cell-vertical-middle">
+                                            <li class="list-group-item"><a href="#" target="_blank"><span><i class="fa fa-facebook-f" aria-hidden="true"></i></span></a></li>
+                                            <li class="list-group-item"><a href="#" target="_blank"><span><i class="fa fa-twitter" aria-hidden="true"></i></span></a></li>
+                                            <li class="list-group-item"><a href="#" target="_blank"><span><i class="fa fa-google-plus" aria-hidden="true"></i></span></a></li>
+                                            <li class="list-group-item"><a href="#" target="_blank"><span><i class="fa fa-linkedin" aria-hidden="true"></i></span></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <div class="speaker-content">
+                                    <a asp-page="Speaker" asp-route-id="@speaker.ID" class="display-block color-black font-weight-600 text-medium-22 text-transform-capitalize margin-bottom-5">@speaker.Name</a>
+                                    <span class="color-bright-gray font-weight-400 text-small-16 margin-bottom-15 display-block">Onvallis nec quis ligula</span>
+
+                                    @foreach (var session in speaker.Sessions)
+                                    {
+                                        <p class="color-black padding-right-50 text-small-16 font-weight-600 no-margin-bottom"><a asp-page="Session" asp-route-id="@session.ID">@session.Title</a></p>
+                                    }
+
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <div class="speaker-content">
-                                <a asp-page="Speaker" asp-route-id="@speaker.ID" class="display-block color-black font-weight-600 text-medium-22 text-transform-capitalize margin-bottom-5">@speaker.Name</a>
-                                <span class="color-bright-gray font-weight-400 text-small-16 margin-bottom-15 display-block">Onvallis nec quis ligula</span>
-
-                                @foreach (var session in speaker.Sessions)
-                                {
-                                    <p class="color-black padding-right-50 text-small-16 font-weight-600 no-margin-bottom"><a asp-page="Session" asp-route-id="@session.ID">@session.Title</a></p>
-                                }
-
-                            </div>
-                        </div>
                     </div>
-                </div>
 
-                if ((i + 1) % 4 == 0 || (i + 1) == Model.Speakers.Count())
-                {
+                    if ((i + 1) % 4 == 0 || (i + 1) == Model.Speakers.Count())
+                    {
                     @:</div>
                 }
 

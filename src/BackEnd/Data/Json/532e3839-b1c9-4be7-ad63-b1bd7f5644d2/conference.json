@@ -1,5 +1,5 @@
 ﻿{
-  "name": "MonkeyFest Sinbgapore 2018",
+  "name": "MonkeyFest Singapore 2018",
   "description": "Red Dot and Monkeys",
   "address1": "Microsoft Singapore HQ - One Marina Boulevard",
   "address2": "1 Marina Blvd",
@@ -8,5 +8,6 @@
   "country": "Singapore",
   "latitude": 1.289919,
   "longitude": 103.853063,
-  "startdate": "10/11/2018"
+  "startdate": "10/11/2018",
+  "registration": "http://www.meetup.com" 
 }

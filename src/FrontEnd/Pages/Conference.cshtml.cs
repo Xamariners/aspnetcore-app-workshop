@@ -25,7 +25,7 @@ namespace FrontEnd.Pages
 
         public IEnumerable<(int Offset, DayOfWeek? DayofWeek, DateTime? Date)> DayOffsets { get; set; }
 
-        public IOrderedEnumerable<Speaker> Speakers { get; set; }
+        public List<SpeakerResponse> Speakers { get; set; }
 
         public List<Guid> UserSessions { get; set; }
 
@@ -73,16 +73,9 @@ namespace FrontEnd.Pages
                                .OrderBy(s => s.TrackId)
                                .GroupBy(s => s.StartTime)
                                .OrderBy(g => g.Key);
-
-            var cats = sessions
-                .Select(s => new { s.Speakers, s..category_name })
-                .Distinct()
-                .OrderByDescending(i => i.category_name)
-                .ToArray();
-
-            Speakers = sessions.SelectMany(x => x.Speakers).OrderBy(x => x.Order);
+            
+            Speakers = await _apiClient.GetConferenceSpeakersAsync(id);
         }
-        
 
         public async Task<IActionResult> OnPostAsync(Guid sessionId)
         {
