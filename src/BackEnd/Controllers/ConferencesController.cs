@@ -71,6 +71,37 @@ namespace BackEnd.Controllers
             return Ok(result);
         }
 
+        //[HttpGet("{name/{name:String}")]
+        //public async Task<IActionResult> GetConferenceByName([FromRoute] string name)
+        //{
+        //    name = name.Replace("-", "");
+
+        //    var c = _db.Conferences.FirstOrDefault(x => x.Name.Equals(name, StringComparison.InvariantCultureIgnoreCase));
+
+        //    if (c == null)
+        //    {
+        //        return NotFound();
+        //    }
+            
+        //    var result = new ConferenceDTO.ConferenceResponse
+        //    {
+        //        ID = c.ID,
+        //        Name = c.Name,
+        //        StartDate = c.StartDate,
+        //        Description = c.Description,
+        //        EndDate = c.EndDate,
+        //        Address1 = c.Address1,
+        //        Address2 = c.Address2,
+        //        City = c.City,
+        //        ConferenceOrganisers = c.ConferenceOrganisers,
+        //        Country = c.Country,
+        //        Latitude = c.Latitude,
+        //        Longitude = c.Longitude,
+        //        PostCode = c.PostCode,
+        //    };
+        //    return Ok(result);
+        //}
+
         [HttpPost]
         public async Task<IActionResult> CreateConference([FromBody] ConferenceDTO.Conference input)
         {

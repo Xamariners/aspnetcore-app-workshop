@@ -13,6 +13,7 @@ namespace BackEnd.Data.Setup
         protected const string CONFERENCE_FILE = "conference.json";
         protected const string SESSIONS_FILE = "sessions.json";
         protected const string SPEAKERS_FILE = "speakers.json";
+        protected const string ORGANISERS_FILE = "organisers.json";
 
         protected BaseDataLoader(IServiceProvider services)
         {

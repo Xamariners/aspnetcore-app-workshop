@@ -56,6 +56,8 @@ namespace BackEnd.Data
 
         public DbSet<Speaker> Speakers { get; set; }
 
+        public DbSet<Sponsor> Sponsors { get; set; }
+
         public DbSet<ConferenceOrganiser> ConferenceOrganisers { get; set; }
 
         public DbSet<Attendee> Attendees { get; set; }

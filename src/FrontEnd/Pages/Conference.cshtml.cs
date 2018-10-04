@@ -29,7 +29,11 @@ namespace FrontEnd.Pages
 
         public List<Guid> UserSessions { get; set; }
 
+        public GlobalConference GlobalConference { get; set; }
+
         public Conference Conference { get; set; }
+
+        public List<Sponsor> Sponsors { get; set; }
 
         public int CurrentDayOffset { get; set; }
 
@@ -46,12 +50,22 @@ namespace FrontEnd.Pages
         {
             return _apiClient.GetSessionsAsync();
         }
-        
+
+        //public async Task OnGetAsync(string name)
+        //{
+        //    Conference = await _apiClient.GetConferenceByNameAsync(name);
+
+        //    if(Conference != null)
+        //        await OnGetAsync(Conference.ID);
+        //}
+
         public async Task OnGetAsync(Guid id, int day = 0)
         {
             CurrentDayOffset = day;
             
-            Conference = await _apiClient.GetConferenceAsync(id);
+            GlobalConference = await _apiClient.GetGlobalConferenceAsync();
+            
+            Conference =  Conference ?? await _apiClient.GetConferenceAsync(id);
 
             var userSessions = await _apiClient.GetSessionsByAttendeeAsync(User.Identity.Name);
 
@@ -75,6 +89,8 @@ namespace FrontEnd.Pages
                                .OrderBy(g => g.Key);
             
             Speakers = await _apiClient.GetConferenceSpeakersAsync(id);
+
+            Sponsors = await _apiClient.GetConferenceSponsorsAsync(Conference.ID);
         }
 
         public async Task<IActionResult> OnPostAsync(Guid sessionId)

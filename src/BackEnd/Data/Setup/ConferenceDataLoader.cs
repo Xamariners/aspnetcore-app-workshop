@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using ConferenceDTO;
 
 namespace BackEnd.Data.Setup
 {
@@ -20,28 +21,61 @@ namespace BackEnd.Data.Setup
 
         protected override void LoadFormattedData(ApplicationDbContext db)
         {
-            var gcFile = File.ReadAllText($"{DATA_DIR}/{GLOBALCONFERENCE_FILE}");
+            // GLOBAL CONFERENCE
+            var gcFile = File.ReadAllText($"{DATA_DIR}/Global/{GLOBALCONFERENCE_FILE}");
             GlobalConference = JsonConvert.DeserializeObject<GlobalConference>(gcFile);
             db.GlobalConferences.Add(GlobalConference);
+
+            // GLOBAL SPONSORS
+            var globalSponsors = new List<Sponsor>();
+            var globalSponsorFiles = Directory.GetFiles($"{DATA_DIR}/Global/Images/Sponsors");
             
-            var dirs = Directory.EnumerateDirectories("Data/Json");
+            foreach (var globalSponsorFile in globalSponsorFiles)
+                globalSponsors.Add(new Sponsor{ParentID =  GlobalConference.ID, Name = globalSponsorFile.Split('\\').LastOrDefault()?.Split('.').FirstOrDefault(), Picture = GetBase64StringForImage(globalSponsorFile)});
+
+            db.Sponsors.AddRange(globalSponsors);
+            
+            // CONFERENCES
+            var dirs = Directory.GetDirectories("Data/Json/Conferences", "*", SearchOption.TopDirectoryOnly);
             foreach (var dir in dirs)
             {
+                // CONFERENCE
                 var conferenceJson = File.ReadAllText($"{dir}/{CONFERENCE_FILE}");
                 var conference = JsonConvert.DeserializeObject<Conference>(conferenceJson);
                 db.Conferences.Add(conference);
 
+                // CONFERENCE SPONSORS
+                var sponsors = new List<Sponsor>();
+                var sponsorFiles = Directory.GetFiles($"{dir}/Images/Sponsors");
+                
+                foreach (var sponsorFile in sponsorFiles)
+                    sponsors.Add(new Sponsor{ParentID = conference.ID, Name = sponsorFile.Split('\\').LastOrDefault()?.Split('.').FirstOrDefault(), Picture = GetBase64StringForImage(sponsorFile)});
+                
+                db.Sponsors.AddRange(sponsors);
+
+                // SESSIONS
                 var sessionsFile = File.OpenText($"{dir}/{SESSIONS_FILE}");
                 var seReader = new JsonTextReader(sessionsFile);
 
+                // SPEAKERS
                 var speakersJson = File.ReadAllText($"{dir}/{SPEAKERS_FILE}");
                 var speakers = JsonConvert.DeserializeObject<List<Speaker>>(speakersJson);
 
                 foreach (var speaker in speakers)
-                    speaker.Picture = GetBase64StringForImage($"{dir}/images/speakers/{speaker.ID}.png");
+                    speaker.Picture = GetBase64StringForImage($"{dir}/Images/Speakers/{speaker.ID}.png");
 
                 db.Speakers.AddRange(speakers);
+
+                // ORGANISERS
+                var organisersJson = File.ReadAllText($"{dir}/{ORGANISERS_FILE}");
+                var organisers = JsonConvert.DeserializeObject<List<ConferenceOrganiser>>(organisersJson);
+
+                foreach (var organiser in organisers)
+                    organiser.Picture = GetBase64StringForImage($"{dir}/Images/Organisers/{organiser.ID}.png");
+
+                db.ConferenceOrganisers.AddRange(organisers);
                 
+                // TRACKS
                 var tracks = new Dictionary<string, Track>();
 
                 JArray doc = JArray.Load(seReader);

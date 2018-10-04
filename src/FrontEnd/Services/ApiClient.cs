@@ -107,8 +107,7 @@ namespace FrontEnd.Services
             var response = await _httpClient.GetAsync($"/api/speakers/conference/{id}");
 
             response.EnsureSuccessStatusCode();
-
-            var bob = await response.Content.ReadAsStringAsync();
+            
             return await response.Content.ReadAsJsonAsync<List<SpeakerResponse>>();
         }
 
@@ -176,6 +175,15 @@ namespace FrontEnd.Services
             return await response.Content.ReadAsJsonAsync<ConferenceResponse>();
         }
 
+        public async Task<Conference> GetConferenceByNameAsync(string name)
+        {
+            var response = await _httpClient.GetAsync($"/api/conferences/name/{name}");
+
+            response.EnsureSuccessStatusCode();
+
+            return await response.Content.ReadAsJsonAsync<ConferenceResponse>();
+        }
+
         public async Task<List<SessionResponse>> GetSessionsByAttendeeAsync(string name)
         {
             // TODO: Would be better to add backend API for this
@@ -198,6 +206,15 @@ namespace FrontEnd.Services
             sessions.RemoveAll(s => !sessionIds.Contains(s.ID));
 
             return sessions;
+        }
+
+        public async Task<List<Sponsor>> GetConferenceSponsorsAsync(Guid id)
+        {
+            var response = await _httpClient.GetAsync($"/api/sponsors/conference/{id}");
+
+            response.EnsureSuccessStatusCode();
+            
+            return await response.Content.ReadAsJsonAsync<List<Sponsor>>();
         }
     }
 }

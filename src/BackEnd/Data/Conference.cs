@@ -11,6 +11,8 @@ namespace BackEnd.Data
 
         public virtual ICollection<Speaker> Speakers { get; set; }
 
+        public virtual ICollection<Sponsor> Sponsors { get; set; }
+
         public virtual ICollection<ConferenceOrganiser> ConferenceOrganisers { get; set; }
 
         public virtual ICollection<Session> Sessions { get; set; }

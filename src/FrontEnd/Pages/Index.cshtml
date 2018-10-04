@@ -14,7 +14,7 @@
 }
 
 <!-- Banner start -->
-<section class="banner-style-1 md-header-banner text-align-center position-relative cover-background" style="background-image: url(/images/background_image.jpg);">
+<section class="banner-style-1 md-header-banner text-align-center position-relative cover-background" style="background-image: url(/images/background.jpg);">
     <div class="md-color-overlay gradient-orange-pink"></div>
     <div class="jumbotron bg-transparent height-100 position-relative">
         <div class="container height-100">
@@ -54,28 +54,31 @@
     <div class="container wow fadeInUp" data-wow-delay="0.5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInUp;">
         <h2 class="text-large-40 text-transform-uppercase font-weight-600 color-black editContent" id="dt-partner2-title-1">Global Event Sponsors</h2>
         <h5 class="font-weight-300 text-medium-22 margin-bottom-45 color-bright-gray editContent" id="dt-partner2-title-2">Thanks to them, we got the events up and running</h5>
-        <div class="logo-slider row">
+        
+        @{int i = 0;}
+
+        @foreach (var sponsor in Model.Sponsors)
+        {
+            // every 4
+            if (i % 4 == 0 || i == 0)
+            {
+            @:<div class="logo-slider row">
+            }
+
             <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
                 <div class="logo-image border-dim-gray bg-white margin-bottom-30">
-                    <img class="linear-transition opacity-30" src="http://placehold.it/214x85" id="dt-partner2-img-1" alt="Logo 1">
+                    <img class="linear-transition opacity-30" src="data:image/png;base64, @sponsor.Picture" id="dt-partner2-img-@i" alt="@sponsor.Name">
                 </div>
             </div>
-            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
-                <div class="logo-image border-dim-gray bg-white margin-bottom-30">
-                    <img class="linear-transition opacity-30" src="http://placehold.it/214x85" id="dt-partner2-img-2" alt="Logo 2">
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
-                <div class="logo-image border-dim-gray bg-white margin-bottom-30">
-                    <img class="linear-transition opacity-30" src="http://placehold.it/214x85" id="dt-partner2-img-3" alt="Logo 3">
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
-                <div class="logo-image border-dim-gray bg-white margin-bottom-30">
-                    <img class="linear-transition opacity-30" src="http://placehold.it/214x85" id="dt-partner2-img-4" alt="Logo 4">
-                </div>
-            </div>
-        </div>
+
+            if ((i + 1) % 4 == 0 || (i + 1) == Model.Sponsors.Count())
+            {
+            @:</div>
+            }
+
+            i++;
+        }
+       
     </div>
 </section>
 <!-- Sponsors end -->

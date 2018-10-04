@@ -25,6 +25,8 @@ namespace FrontEnd.Pages
 
         public List<Conference> Conferences { get; set; }
 
+        public List<Sponsor> Sponsors { get; set; }
+
         public int CurrentDayOffset { get; set; }
 
         [TempData]
@@ -38,6 +40,7 @@ namespace FrontEnd.Pages
 
             GlobalConference = await _apiClient.GetGlobalConferenceAsync();
             Conferences = await _apiClient.GetConferencesAsync();
+            Sponsors = await _apiClient.GetConferenceSponsorsAsync(GlobalConference.ID);
         }
     }
 }
