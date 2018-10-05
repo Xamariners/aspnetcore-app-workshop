@@ -41,6 +41,8 @@ namespace FrontEnd.Pages
             GlobalConference = await _apiClient.GetGlobalConferenceAsync();
             Conferences = await _apiClient.GetConferencesAsync();
             Sponsors = await _apiClient.GetConferenceSponsorsAsync(GlobalConference.ID);
+
+            ViewData["Title"] = GlobalConference.Name;
         }
     }
 }

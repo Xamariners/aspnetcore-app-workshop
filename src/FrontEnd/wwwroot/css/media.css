@@ -643,7 +643,7 @@ h2.border-title-style-1::after { bottom: -26px; }
 .bluish-gray-black-menu .menuBar .navbar-nav li a:hover, 
 .bluish-gray-black-menu .menuBar .navbar-nav li a:active, 
 .bluish-gray-black-menu .menuBar .navbar-nav li a:focus, 
-.bluish-gray-black-menu .menuBar .navbar-nav li.active a { color: #ff3a51; }
+.bluish-gray-black-menu .menuBar .navbar-nav li.active a { color: #f3773e; }
 .black-and-pink-menu .menuBar .navbar-nav li a { color: #FFF; }
 .md-header-style-2 .navbar-default .navbar-toggle .icon-bar { background-color: rgb(103, 103, 103); }
 .md-header-style-2 .menuBar { padding: 0;  border-top: none; }

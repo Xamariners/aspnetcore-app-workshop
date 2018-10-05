@@ -175,9 +175,9 @@ namespace FrontEnd.Services
             return await response.Content.ReadAsJsonAsync<ConferenceResponse>();
         }
 
-        public async Task<Conference> GetConferenceByNameAsync(string name)
+        public async Task<Conference> GetConferenceBySlugAsync(string slug)
         {
-            var response = await _httpClient.GetAsync($"/api/conferences/name/{name}");
+            var response = await _httpClient.GetAsync($"/api/conferences/slug/{slug}");
 
             response.EnsureSuccessStatusCode();
 

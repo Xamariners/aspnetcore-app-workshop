@@ -24,7 +24,7 @@ namespace FrontEnd.Services
         Task<List<Conference>> GetConferencesAsync();
         Task<GlobalConference> GetGlobalConferenceAsync();
         Task<Conference> GetConferenceAsync(Guid id);
-        Task<Conference> GetConferenceByNameAsync(string name);
+        Task<Conference> GetConferenceBySlugAsync(string slug);
         Task<List<Sponsor>> GetConferenceSponsorsAsync(Guid id);
     }
 }

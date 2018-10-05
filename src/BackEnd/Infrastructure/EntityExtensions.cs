@@ -46,6 +46,8 @@ namespace BackEnd.Data
                 Name = speaker.Name,
                 Bio = speaker.Bio,
                 WebSite = speaker.WebSite,
+                Twitter = speaker.Twitter,
+                LinkedIn = speaker.LinkedIn,
                 Sessions = speaker.SessionSpeakers?
                     .Select(ss =>
                         new ConferenceDTO.Session
@@ -53,7 +55,8 @@ namespace BackEnd.Data
                             ID = ss.SessionId,
                             Title = ss.Session.Title
                         })
-                    .ToList()
+                    .ToList(),
+                Picture = speaker.Picture
             };
 
         public static ConferenceDTO.AttendeeResponse MapAttendeeResponse(this Attendee attendee) =>

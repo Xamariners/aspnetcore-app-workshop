@@ -160,7 +160,7 @@ Form Style
 .form-style-1.bluish-white-red input.md-form-active,
 .form-style-1.bluish-white-red textarea:focus,
 .form-style-1.bluish-white-red textarea:active,
-.form-style-1.bluish-white-red textarea.md-form-active { border-color: #ff3a51;}
+.form-style-1.bluish-white-red textarea.md-form-active { border-color: #f3773e;}
 
 .form-style-1.bluish-white-red label { color: #9b9b9b; }
 
@@ -169,7 +169,7 @@ Form Style
 .form-style-1.bluish-white-red input.md-form-active + label,
 .form-style-1.bluish-white-red textarea:focus + label,
 .form-style-1.bluish-white-red textarea:active + label,
-.form-style-1.bluish-white-red textarea.md-form-active + label { color: #ff3a51;}
+.form-style-1.bluish-white-red textarea.md-form-active + label { color: #f3773e;}
 
 .form-style-1.dark-gray-pink input[type="text"],
 .form-style-1.dark-gray-pink input[type="email"],
@@ -212,7 +212,7 @@ Form Style
 .form-style-3 .md-textarea textarea { height: 133px; display: block; }
 
 .form-style-3 .md-input input:focus,
-.form-style-3 .md-textarea textarea:focus { border-color: #ff3a51; }
+.form-style-3 .md-textarea textarea:focus { border-color: #f3773e; }
 
 .form-style-4 .md-input input[type="text"],
 .form-style-4 .md-input input[type="email"],
@@ -284,7 +284,7 @@ Masonry Gallery
 
 .tab-style-1.round-border-tab .button:hover,
 .tab-style-1.round-border-tab .button:focus,
-.tab-style-1.round-border-tab .button.is-checked { background-color: #ff3a51; color: #FFF; }
+.tab-style-1.round-border-tab .button.is-checked { background-color: #f3773e; color: #FFF; }
 
 .gallery-style-1 .md-gImgpath.odd-line { height: 340px; }
 .gallery-style-1 .md-gImgpath.even-line { height: 254px; }
@@ -303,7 +303,7 @@ Invitation Card
 /* ===================================
 Timer with hexagonal and simple
 ====================================== */
-.hexagonal-rounded-edge .counter-day-number { display: block; font-size: 22px; font-weight: 600; color: #ff3a51; }
+.hexagonal-rounded-edge .counter-day-number { display: block; font-size: 22px; font-weight: 600; color: #f3773e; }
 .hexagonal-rounded-edge .counter-words { display: block; font-size: 14px; font-weight: 500; text-transform: uppercase; color: #929292; }
 
 .timer-clock-style-1 .simple-time-counter { display: inline-block; margin-right: 15px; margin-left: 15px; }
@@ -473,7 +473,7 @@ Event
 .banner-style-1 .md-banner-content .line-left-right:after { right: -71px; }
 .banner-style-1 .md-banner-content .event-time-counter { padding-top: 40px; }
 .banner-style-1 .md-banner-content .event-time-counter small{ line-height: 20px;}
-.upcoming-event-style-1 .upcoming-event-for-slider { height: 797px; }
+.upcoming-event-style-1 .upcoming-event-for-slider { height: 1000px; }
 .upcoming-event-style-1 .event-time-speaker-detail .event-detail-button { top: 50%; transform: translateY(50%); }
 .upcoming-event-style-1 .event-time-speaker-detail .event-detail-button span{ padding: 6.5px 19px; margin-right: 17px; border: 1px solid transparent; }
 .upcoming-event-style-1 .event-time-speaker-detail .event-detail-button a.btn-small { height: 36px; line-height: 34px; }
@@ -485,8 +485,8 @@ Event
 .upcoming-event-style-1 .coming-event-nav-slides { padding: 22px 0px; border-radius: 5px; }
 .upcoming-event-style-1 .upcoming-event-slide .left-event-time { top: 50px; margin-left: auto; margin-right: 10px; }
 .upcoming-event-style-1 .upcoming-event-slide .left-event-time span { line-height: 34px; padding-right: 20px; }
-.upcoming-event-style-1 .upcoming-event-slide .left-event-time .outer-bordered-circle { width: 32px; height: 32px; border-radius: 50%; border: 2px solid #ff3a51; background-color: #FFF; padding: 6.5px;}
-.upcoming-event-style-1 .upcoming-event-slide .left-event-time .outer-bordered-circle .inner-filled-circle { width: 100%; height: 100%; border-radius: 50%; background-color: #ff3a51; }
+.upcoming-event-style-1 .upcoming-event-slide .left-event-time .outer-bordered-circle { width: 32px; height: 32px; border-radius: 50%; border: 2px solid #f3773e; background-color: #FFF; padding: 6.5px;}
+.upcoming-event-style-1 .upcoming-event-slide .left-event-time .outer-bordered-circle .inner-filled-circle { width: 100%; height: 100%; border-radius: 50%; background-color: #f3773e; }
 .upcoming-event-style-1 .upcoming-event-slide .left-event-time:before,
 .upcoming-event-style-1 .upcoming-event-slide .left-event-time:after { content: " "; position: absolute; background-color: #eaeaea; width: 1px; right: 16px;}
 .upcoming-event-style-1 .upcoming-event-slide .left-event-time:before { top: -80px; height: 80px; }
@@ -496,9 +496,9 @@ Event
 .testimonial-style-2 .md-testimonial-slider hr { width: 82px; border-width: 1px; }
 .contactus-style-2 .contact-form-address-container { padding-left: 3%; padding-right: 33.8%; }
 .contactus-style-2 .contact-email a:hover,
-.contactus-style-2 .contact-email a:focus { color: #ff3a51; }
+.contactus-style-2 .contact-email a:focus { color: #f3773e; }
 .footer-style-3 .md-newsletter-form input[type="email"] { width: 469px; height: 46px; margin-right: 18px; border: 1px solid transparent; border-radius: 25px;}
-.footer-style-3 .md-newsletter-form input[type="email"]:focus { border-color: #ff3a51; }
+.footer-style-3 .md-newsletter-form input[type="email"]:focus { border-color: #f3773e; }
 .contactus-style-2 .md-map {height: 871px; }
 .gallery-style-3 .gallery-image { height: 290px;}
 .gallery-style-3 .gallery-image:hover img { opacity: 1; }
@@ -535,7 +535,7 @@ h1.border-title-style-2::after  { content: ''; position: absolute; bottom: -20px
 .real-estate .counter-section { background-position: bottom; }
 .product-shop-style-2 .property-box .property-top .box-label { padding: 5px 10px; top: -16px; }
 .product-shop-style-2 .property-box .property-top .box-label:after { position: absolute; content: ""; width: 0; border-bottom: 16px solid transparent; border-left: 12px solid #34495e; border-top: 16px solid transparent; top: 0px; right: -12px; -webkit-transition: 0.5s all linear; -moz-transition: 0.5s all linear; transition: 0.5s all linear; }
-.product-shop-style-2 .property-box:hover .property-top .box-label:after { border-left-color: #ff3a51; }
+.product-shop-style-2 .property-box:hover .property-top .box-label:after { border-left-color: #f3773e; }
 .product-shop-style-2 .properties-container .property-box .property-top { padding: 20px 0 24px; }
 .product-shop-style-2 .properties-container .property-box .property-image { height: 238px; }
 .product-shop-style-2 .properties-container .property-box .property-detail ul li > .fa { padding-right: 10px; min-width: 33px; }
@@ -543,15 +543,15 @@ h1.border-title-style-2::after  { content: ''; position: absolute; bottom: -20px
 .product-shop-style-2 .properties-container .property-box .property-bottom .share-icon,
 .product-shop-style-2 .properties-container .property-box .property-bottom .like-icon { line-height: 30px; }
 .product-shop-style-2 .properties-container .property-box:hover { -webkit-box-shadow: 0px 0px 9px 4px rgba(161, 161, 161, 0.25); -moz-box-shadow: 0px 0px 9px 4px rgba(161, 161, 161, 0.25); box-shadow: 0px 0px 9px 4px rgba(161, 161, 161, 0.25); }
-.product-shop-style-2 .properties-container .property-box:hover .property-top .box-label { background-color: #ff3a51; }
-.product-shop-style-2 .properties-container .property-box:hover { border-bottom-color: #ff3a51; }
-.product-shop-style-2 .properties-container .property-box .property-bottom span:hover a { color: #ff3a51; }
+.product-shop-style-2 .properties-container .property-box:hover .property-top .box-label { background-color: #f3773e; }
+.product-shop-style-2 .properties-container .property-box:hover { border-bottom-color: #f3773e; }
+.product-shop-style-2 .properties-container .property-box .property-bottom span:hover a { color: #f3773e; }
 .blog-style-3 .blog-slider-style-3 .recent-post-slide .post-image-block { height: 370px; }
 .blog-style-3 .blog-slider-style-3 .recent-post-slide:hover .post-image-block { opacity: 0.8; }
 .blog-style-3 .blog-slider-style-3 .recent-post-slide { padding-bottom: 186px; }
 .blog-style-3 .blog-slider-style-3 .recent-post-slide .post-content-block { top: 75%; bottom: auto; width: 462px; }
 .blog-style-3 .blog-slider-style-3 .recent-post-slide .post-content-block:hover span { color: #000; }
-.blog-style-3 .blog-slider-style-3 .recent-post-slide .post-content-block:hover a { color: #ff3a51; }
+.blog-style-3 .blog-slider-style-3 .recent-post-slide .post-content-block:hover a { color: #f3773e; }
 .blog-style-3 .blog-slider-style-3 .recent-post-slide .post-content-block .name-link { padding-right: 13px; }
 .team-style-2 .agent-social-block p { padding-right: 30px; }
 .team-style-2 .agent-contact-block span { padding-right: 30px; }

@@ -50,22 +50,14 @@ namespace FrontEnd.Pages
         {
             return _apiClient.GetSessionsAsync();
         }
-
-        //public async Task OnGetAsync(string name)
-        //{
-        //    Conference = await _apiClient.GetConferenceByNameAsync(name);
-
-        //    if(Conference != null)
-        //        await OnGetAsync(Conference.ID);
-        //}
-
-        public async Task OnGetAsync(Guid id, int day = 0)
+        
+        public async Task OnGetAsync(string id, int day = 0)
         {
             CurrentDayOffset = day;
             
             GlobalConference = await _apiClient.GetGlobalConferenceAsync();
-            
-            Conference =  Conference ?? await _apiClient.GetConferenceAsync(id);
+
+            Conference = await _apiClient.GetConferenceBySlugAsync(id);
 
             var userSessions = await _apiClient.GetSessionsByAttendeeAsync(User.Identity.Name);
 
@@ -88,9 +80,11 @@ namespace FrontEnd.Pages
                                .GroupBy(s => s.StartTime)
                                .OrderBy(g => g.Key);
             
-            Speakers = await _apiClient.GetConferenceSpeakersAsync(id);
+            Speakers = await _apiClient.GetConferenceSpeakersAsync(Conference.ID);
 
             Sponsors = await _apiClient.GetConferenceSponsorsAsync(Conference.ID);
+
+            ViewData["Title"] = Conference.Name;
         }
 
         public async Task<IActionResult> OnPostAsync(Guid sessionId)

@@ -24,11 +24,11 @@
                         <span class="event-date display-inline-block position-relative editContent" id="dt-head2-1" style="color:rgb(255, 255, 255);font-size:16px;background-color:rgba(0, 0, 0, 0);font-family:Poppins, sans-serif;font-weight:600;text-transform:none;"><i class="fa fa-calendar icon-style" aria-hidden="true"></i> @Model.GlobalConference.StartDate.ToLongDateString()</span>
                         <span class="event-venue display-inline-block position-relative editContent" id="dt-head2-2"><i class="fa fa-map-o icon-style" aria-hidden="true"></i>@Model.GlobalConference.Location</span>
                     </div>
-                    <h1 class="text-extra-large-90 color-white font-weight-600 text-transform-uppercase margin-bottom-25 editContent" id="dt-head2-title-1" style="color:rgb(255, 255, 255);font-size:90px;background-color:rgba(0, 0, 0, 0);font-family:Poppins, sans-serif;font-weight:600;text-transform:uppercase;"><span class="display-block text-medium-22 color-white font-weight-600 text-transform-uppercase margin-bottom-30 ">@Model.GlobalConference.Summary &nbsp;</span>@Model.GlobalConference.Name</h1>
+                    <h1 class="text-extra-large-90 color-white font-weight-600 text-transform-uppercase margin-bottom-25 editContent" id="dt-head2-title-1" style="color:rgb(255, 255, 255);font-size:3em;background-color:rgba(0, 0, 0, 0);font-family:Poppins, sans-serif;font-weight:600;text-transform:uppercase;"><span class="display-block text-medium-22 color-white font-weight-600 text-transform-uppercase margin-bottom-30 ">@Model.GlobalConference.Summary &nbsp;</span>@Model.GlobalConference.Name</h1>
                     <h5 class=" display-table margin-lr-auto text-medium-22 color-white font-weight-600 text-transform-uppercase margin-bottom-30 position-relative line-left-right editContent" id="dt-head2-title-2">@Model.GlobalConference.TagLine</h5>
                     <div class="timer-3 event-time-counter margin-bottom-80 width-100" data-timer="1000" id="dt-head2-timer-1"></div>
-                    <a class="btn bg-white color-black margin-lr-15" href="#" id="dt-head2-btn-1">Find Event</a>
-                    <a class="btn empty-btn white-btn margin-lr-15" href="#" id="dt-head2-btn-2">Read More</a>
+                    <a class="btn bg-white color-black margin-lr-15" href="#contact" id="dt-head2-btn-1">Find Event</a>
+                    <a class="btn empty-btn white-btn margin-lr-15" href="#about" id="dt-head2-btn-2">Read More</a>
                 </div>
             </div>
         </div>
@@ -37,7 +37,7 @@
 <!-- Banner End -->
 
 <!-- Event List / Map Start -->
-<section id="contact" class="upcoming-event-style-1 upcoming-event-section width-100 float-left padding-tb-73-80 position-relative text-align-center"  style="background-color: rgb(235, 233, 226)">
+<section id="contact" class="upcoming-event-style-1 upcoming-event-section width-100 float-left padding-tb-73-80 position-relative text-align-center" style="background-color: rgb(233, 233, 233)">
     <div class="container-fluid overflow-hidden wow fadeInUp" data-wow-delay="0.5s">
         <h2 class="text-large-40 text-transform-uppercase font-weight-600 color-black">@Model.Conferences.Count.ToString() Events</h2>
         <h5 class="font-weight-300 text-medium-22 margin-bottom-45 color-bright-gray editContent">Pick an event near you on the map below</h5>
@@ -50,7 +50,7 @@
 <!-- Event List / Map Ends -->
 
 <!-- Sponsors start -->
-<section id="sponsers" class="logoshowcase-style-2 md-logoshowcase-section text-align-center width-100 padding-tb-73-50 display-inline-block header-bg">
+<section id="sponsors" class="logoshowcase-style-2 md-logoshowcase-section text-align-center width-100 padding-tb-73-50 display-inline-block header-bg">
     <div class="container wow fadeInUp" data-wow-delay="0.5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInUp;">
         <h2 class="text-large-40 text-transform-uppercase font-weight-600 color-black editContent" id="dt-partner2-title-1">Global Event Sponsors</h2>
         <h5 class="font-weight-300 text-medium-22 margin-bottom-45 color-bright-gray editContent" id="dt-partner2-title-2">Thanks to them, we got the events up and running</h5>
@@ -90,13 +90,12 @@
     <script type='text/javascript'>
         function GetMap() {
             renderRequestsMap("events-map", getLocationsFromModelRequests());
-
         };
 
         function getLocationsFromModelRequests() {
             var requestData = [];
             @foreach (var conference in Model.Conferences){
-                @:var reqData = { lat:@conference.Latitude, long:@conference.Longitude, name: '@conference.City', url:'/Conference/@conference.ID', color:'blue'};
+                @:var reqData = { lat:@conference.Latitude, long:@conference.Longitude, name: '@conference.City', url:'/Conference/@conference.Slug', color:'blue'};
                 @:requestData.push(reqData);
             }
             return requestData;
@@ -111,7 +110,7 @@
             sectionClass: 'hexagonal-rounded-edge',
             amountClass: 'counter-day-number',
             wordClass: 'counter-words',
-            enableUtc: true,
+            enableUtc: true
         });
 
     </script>

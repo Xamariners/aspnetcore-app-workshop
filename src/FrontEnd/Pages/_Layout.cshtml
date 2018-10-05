@@ -1,15 +1,15 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <title>@ViewData["Title"] - FrontEnd</title>
+    <title>@ViewData["Title"]</title>
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <!-- Favicons -->
-    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="~/images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="~/images/favicon.ico" type="image/x-icon">
     
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
@@ -46,7 +46,7 @@
                     <div class="row">
                         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                             <div class="md-theme-logo">
-                                <a asp-page="/Index"><img src="images/logo.png" alt="Logo" /></a>
+                                <a asp-page="/Index"><img src="~/images/logo.png" alt="Logo" /></a>
                             </div>
                         </div>
 
@@ -65,13 +65,22 @@
                                     <div id="md-site-navbar" class="collapse navbar-collapse">
                                         <ul class="nav navbar-nav navbar-right">
                                             <li><a asp-page="/Index">Home</a></li>
-                                            <li><a asp-page="/Speakers">Speakers</a></li>
+                                            @if (!this.BodyContent.ToString().Contains("Conference"))
+                                            {
+                                                <li><a href="#contact">Find Event</a></li>
+                                                <li><a asp-page="/Speakers">Speakers</a></li>
+                                            }
+                                            else
+                                            {
+                                                <li><a href="#speakers">Speakers</a></li>
+                                                <li><a href="#schedule">Schedule</a></li>
+                                            }
+                                           
                                             <li><a href="#aboutus">About</a></li>
-                                            <li><a href="#schedule">Schedule</a></li>
                                             <li><a href="#sponsors">Sponsors</a></li>
-                                            <li><a asp-page="/Search">Search</a></li>
                                             <li authz="true"><a asp-page="/MyAgenda">My Agenda</a></li>
                                         </ul>
+
                                         @*<form asp-controller="account" asp-action="logout" method="post" id="logoutForm" class="navbar-right">
                                             <ul class="nav navbar-nav navbar-right">
                                                 <li authz="true"><a>@Context.User.Identity.Name</a></li>
@@ -104,11 +113,9 @@
                                         
                                         <div class="md-social-menu width-100 float-left social-media-icons social-rounded-bg margin-bottom-25">
                                             <ul class="list-group list-style-none wow fadeInUp" data-wow-delay="0.5s">
-                                                <li class="list-group-item"><a href="#" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                                <li class="list-group-item"><a href="#" target="_blank"><i class="fa fa-globe" aria-hidden="true"></i></a></li>
                                                 <li class="list-group-item"><a href="#" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                                                <li class="list-group-item"><a href="#" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
                                                 <li class="list-group-item"><a href="#" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-                                                <li class="list-group-item"><a href="#" target="_blank"><i class="fa fa-youtube" aria-hidden="true"></i></a></li>
                                             </ul>
                                         </div>
                                         <div class="md-copyright width-100 float-left text-small-16 font-weight-400 color-white position-relative">
