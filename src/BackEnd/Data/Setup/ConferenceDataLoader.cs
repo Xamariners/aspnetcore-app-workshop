@@ -70,11 +70,14 @@ namespace BackEnd.Data.Setup
                 var organisersJson = File.ReadAllText($"{dir}/{ORGANISERS_FILE}");
                 var organisers = JsonConvert.DeserializeObject<List<ConferenceOrganiser>>(organisersJson);
 
+                conference.ConferenceOrganisers = new List<ConferenceOrganiser>();
                 foreach (var organiser in organisers)
+                {
                     organiser.Picture = GetBase64StringForImage($"{dir}/Images/Organisers/{organiser.ID}.png");
+                    organiser.ConferenceID = conference.ID;
+                    conference.ConferenceOrganisers.Add(organiser);
+                }
 
-                db.ConferenceOrganisers.AddRange(organisers);
-                
                 // TRACKS
                 var tracks = new Dictionary<string, Track>();
 

@@ -75,7 +75,9 @@ namespace BackEnd.Controllers
         [HttpGet("slug/{id}")]
         public async Task<IActionResult> GetConferenceBySlug([FromRoute] string id)
         {
-            var c = await _db.Conferences.FirstOrDefaultAsync(x => x.Slug.Equals(id, StringComparison.InvariantCultureIgnoreCase));
+            var c = await _db.Conferences
+                .Include(x => x.ConferenceOrganisers)
+                .FirstOrDefaultAsync(x => x.Slug.Equals(id, StringComparison.InvariantCultureIgnoreCase));
 
             if (c == null)
             {

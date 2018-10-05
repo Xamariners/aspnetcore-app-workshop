@@ -31,7 +31,7 @@ namespace FrontEnd.Pages
 
         public GlobalConference GlobalConference { get; set; }
 
-        public Conference Conference { get; set; }
+        public ConferenceResponse Conference { get; set; }
 
         public List<Sponsor> Sponsors { get; set; }
 

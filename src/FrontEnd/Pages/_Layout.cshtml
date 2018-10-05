@@ -65,19 +65,21 @@
                                     <div id="md-site-navbar" class="collapse navbar-collapse">
                                         <ul class="nav navbar-nav navbar-right">
                                             <li><a asp-page="/Index">Home</a></li>
-                                            @if (!this.BodyContent.ToString().Contains("Conference"))
+                                            @if (@Context.Request.Path.Value.ToLower().Contains("/"))
                                             {
                                                 <li><a href="#contact">Find Event</a></li>
                                                 <li><a asp-page="/Speakers">Speakers</a></li>
+                                                <li><a href="#aboutus">About</a></li>
+                                                <li><a href="#sponsors">Sponsors</a></li>
                                             }
-                                            else
+                                            else if (!@Context.Request.Path.Value.ToLower().Contains("conference"))
                                             {
                                                 <li><a href="#speakers">Speakers</a></li>
                                                 <li><a href="#schedule">Schedule</a></li>
+                                                <li><a href="#aboutus">About</a></li>
+                                                <li><a href="#sponsors">Sponsors</a></li>
                                             }
-                                           
-                                            <li><a href="#aboutus">About</a></li>
-                                            <li><a href="#sponsors">Sponsors</a></li>
+
                                             <li authz="true"><a asp-page="/MyAgenda">My Agenda</a></li>
                                         </ul>
 

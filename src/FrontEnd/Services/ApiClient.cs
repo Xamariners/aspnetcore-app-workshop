@@ -166,7 +166,7 @@ namespace FrontEnd.Services
             return result.FirstOrDefault();
         }
 
-        public async Task<Conference> GetConferenceAsync(Guid id)
+        public async Task<ConferenceResponse> GetConferenceAsync(Guid id)
         {
             var response = await _httpClient.GetAsync($"/api/conferences/{id}");
 
@@ -175,7 +175,7 @@ namespace FrontEnd.Services
             return await response.Content.ReadAsJsonAsync<ConferenceResponse>();
         }
 
-        public async Task<Conference> GetConferenceBySlugAsync(string slug)
+        public async Task<ConferenceResponse> GetConferenceBySlugAsync(string slug)
         {
             var response = await _httpClient.GetAsync($"/api/conferences/slug/{slug}");
 

@@ -38,7 +38,7 @@
 <!-- Speaker Start -->
 <section id="speakers" class="team-style-3 speaker-section text-align-left width-100 float-left padding-tb-73-92" style="background-color: rgb(233, 233, 233)">
     <div class="container wow fadeInUp" data-wow-delay="0.5s">
-        <h2 class="text-large-40 text-transform-uppercase font-weight-600 color-black">Speakers</h2>
+        <h2 class="text-large-40 text-transform-uppercase font-weight-600 color-black">@Model.Speakers Speakers</h2>
         <h5 class="color-bright-gray font-weight-300 text-medium-22 margin-bottom-43">The best of the best</h5>
 
         <div class="team-slider-style-3 speaker-slider dot-style-1 small-dot black-red-dot position-left-dot row">
@@ -193,54 +193,58 @@
                 </div>
                 <div class="col-lg-7 col-md-12 col-sm-12 col-xs-12">
                     <div class="contact-form-address-container width-100">
-                        <h2 class="text-large-40 font-weight-600 text-transform-uppercase color-black margin-bottom-40 editContent" id="dt-contact2-text-1">Lets get in touch</h2>
+                        <h2 class="text-large-40 font-weight-600 text-transform-uppercase color-black margin-bottom-40 editContent" id="dt-contact2-text-1">@Model.Conference.Name</h2>
                         <div class="md-contact-form-section form-style-3 width-100 float-left margin-bottom-40">
-                            <form method="POST" class="md-contct-form" action="javascript:void(0)">
-                                <div class="row">
-                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                        <div class="md-input md-input-name odd">
-                                            <input name="name" id="md-name" data-email="required" placeholder="Name" type="text">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                        <div class="md-input md-input-email even">
-                                            <input name="email" id="md-email" data-email="required" placeholder="Email" type="email">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                        <div class="md-input md-input-number odd">
-                                            <input name="number" id="md-number" data-email="required" placeholder="Phone Number" type="number">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                        <div class="md-input md-input-subject even">
-                                            <input name="subject" id="md-subject" data-email="required" placeholder="Subject" type="text">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                        <div class="md-textarea md-input-comments">
-                                            <textarea name="comment" id="md-comments" data-email="required" placeholder="How Can I Help?"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                        <div class="md-form-submit">
-                                            <button class="dt_submit btn tomato-pink-btn empty-btn linear-transition" type="submit">SEND MESSAGE</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
                         </div>
                         <div class="contact-address width-100">
-                            <span class="color-black text-small-16 font-weight-600 margin-bottom-5 display-block editContent" id="dt-contact2-text-2">Address</span>
-                            <p class="color-charcoal-light text-small-16 font-weight-400 margin-bottom-35 editContent" id="dt-contact2-text-3">77 Winchester Lane Coachella, CA 92236</p>
+                            <span class="color-black color-black margin-bottom-5 font-weight-600 text-medium-22" id="dt-contact2-text-2">Date</span>
+                            <p class="color-charcoal-light text-small-16 font-weight-400 margin-bottom-35 editContent" id="dt-contact2-text-3">@Model.Conference.StartDate.ToLongDateString()</p>
                         </div>
-                        <div class="contact-email width-100">
-                            <span class="color-black text-small-16 font-weight-600 margin-bottom-5 display-block editContent" id="dt-contact2-text-4">Email</span>
-                            <a class="color-charcoal-light text-small-16 font-weight-400 margin-bottom-35 display-inline-block editContent" id="dt-contact2-text-5" href="mailto:support@onepagestudio.com">support@onepagestudio.com</a>
+                        <div class="contact-address width-100">
+                            <span class="color-black color-black margin-bottom-5 font-weight-600 text-medium-22" id="dt-contact2-text-2">Address</span>
+                            <p class="color-charcoal-light text-small-16 font-weight-400 margin-bottom-35 editContent" id="dt-contact2-text-3">@Model.Conference.Address1 @Model.Conference.Address2 @Model.Conference.City @Model.Conference.PostCode @Model.Conference.Country </p>
                         </div>
-                        <div class="contact-number width-100">
-                            <span class="color-black text-small-16 font-weight-600 margin-bottom-5 display-block editContent" id="dt-contact2-text-6">Phone Number</span>
-                            <p class="color-charcoal-light text-small-16 font-weight-400 no-margin-bottom editContent" id="dt-contact2-text-7">+91 1234 567 098</p>
+
+                        <div class="contact-address width-100">
+                            <span class="color-black color-black margin-bottom-5 font-weight-600 text-medium-22" id="dt-contact2-text-2">Event Team</span>
+                            <p>
+                                @foreach (var organiser in Model.Conference.ConferenceOrganisers)
+                                {
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 margin-bottom-50">
+                                        <div class="flex-container display-flex row">
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                <div class="speaker-image width-100 position-relative">
+                                                    <img class="border-radius-3 img-object-fit-cover img100 height-100" src="data:image/png;base64, @organiser.Picture" alt="@organiser.Name" />
+                                                    <div class="social-media-icons white-gray-icon small-icon-20 gradient-orange-pink position-absolute height-100 width-100 position-top display-table border-radius-3 linear-transition opacity-0">
+                                                        <ul class="md-person-social list-group text-align-center display-table-cell-vertical-middle">
+                                                            <li class="list-group-item"><a href="@organiser.WebSite" target="_blank"><span><i class="fa fa-globe" aria-hidden="true"></i></span></a></li>
+                                                            <li class="list-group-item"><a href="@organiser.Twitter" target="_blank"><span><i class="fa fa-twitter" aria-hidden="true"></i></span></a></li>
+                                                            <li class="list-group-item"><a href="@organiser.LinkedIn" target="_blank"><span><i class="fa fa-linkedin" aria-hidden="true"></i></span></a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="">
+                                                <div class="speaker-content">
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="contact-number width-100">
+                                        <span class="color-black text-small-16 font-weight-600 margin-bottom-5 display-block editContent" id="dt-contact2-text-6">
+                                            @organiser.Name
+                                        </span>
+
+                                        <p class="color-charcoal-light text-small-16 font-weight-400 no-margin-bottom editContent" id="dt-contact2-text-7">
+                                            @organiser.TagLine
+                                        </p>
+                                        <p class="color-charcoal-light text-small-16 font-weight-400 no-margin-bottom editContent" id="dt-contact2-text-7">
+                                            @organiser.Email
+                                        </p>
+                                    </div>
+                                }
+                            </p>
                         </div>
                     </div>
                 </div>

@@ -23,8 +23,8 @@ namespace FrontEnd.Services
         Task RemoveSessionFromAttendeeAsync(string name, Guid sessionId);
         Task<List<Conference>> GetConferencesAsync();
         Task<GlobalConference> GetGlobalConferenceAsync();
-        Task<Conference> GetConferenceAsync(Guid id);
-        Task<Conference> GetConferenceBySlugAsync(string slug);
+        Task<ConferenceResponse> GetConferenceAsync(Guid id);
+        Task<ConferenceResponse> GetConferenceBySlugAsync(string slug);
         Task<List<Sponsor>> GetConferenceSponsorsAsync(Guid id);
     }
 }
