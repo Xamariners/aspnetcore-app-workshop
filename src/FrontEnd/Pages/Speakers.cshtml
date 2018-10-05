@@ -41,7 +41,7 @@
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                 <div class="speaker-content">
                                     <a asp-page="Speaker" asp-route-id="@speaker.ID" class="display-block color-black font-weight-600 text-medium-22 text-transform-capitalize margin-bottom-5">@speaker.Name</a>
-                                    <span class="color-bright-gray font-weight-400 text-small-16 margin-bottom-15 display-block">Onvallis nec quis ligula</span>
+                                    <span class="color-bright-gray font-weight-400 text-small-16 margin-bottom-15 display-block">@speaker.TagLine</span>
 
                                     @foreach (var session in speaker.Sessions)
                                     {

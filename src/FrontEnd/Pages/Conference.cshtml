@@ -70,7 +70,7 @@
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                 <div class="speaker-content">
                                     <a asp-page="Speaker" asp-route-id="@speaker.ID" class="display-block color-black font-weight-600 text-medium-22 text-transform-capitalize margin-bottom-5">@speaker.Name</a>
-                                    <span class="color-bright-gray font-weight-400 text-small-16 margin-bottom-15 display-block">Onvallis nec quis ligula</span>
+                                    <span class="color-bright-gray font-weight-400 text-small-16 margin-bottom-15 display-block">@speaker.TagLine</span>
 
                                     @foreach (var session in speaker.Sessions)
                                     {
@@ -256,8 +256,8 @@
 <!-- Sponsors start -->
 <section id="sponsors" class="logoshowcase-style-2 md-logoshowcase-section text-align-center width-100 padding-tb-73-50 display-inline-block header-bg">
     <div class="container wow fadeInUp" data-wow-delay="0.5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInUp;">
-        <h2 class="text-large-40 text-transform-uppercase font-weight-600 color-black editContent" id="dt-partner2-title-1">Events sponsors</h2>
-        <h5 class="font-weight-300 text-medium-22 margin-bottom-45 color-bright-gray editContent" id="dt-partner2-title-2">Alteration in some form, by injected hu randomised</h5>
+        <h2 class="text-large-40 text-transform-uppercase font-weight-600 color-black editContent" id="dt-partner2-title-1">Event Sponsors</h2>
+        <h5 class="font-weight-300 text-medium-22 margin-bottom-45 color-bright-gray editContent" id="dt-partner2-title-2">Thanks to them, we got this event up and running</h5>
 
         @{int j = 0;}
 

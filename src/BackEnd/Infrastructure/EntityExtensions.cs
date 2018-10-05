@@ -44,6 +44,7 @@ namespace BackEnd.Data
             {
                 ID = speaker.ID,
                 Name = speaker.Name,
+                TagLine = speaker.TagLine,
                 Bio = speaker.Bio,
                 WebSite = speaker.WebSite,
                 Twitter = speaker.Twitter,
