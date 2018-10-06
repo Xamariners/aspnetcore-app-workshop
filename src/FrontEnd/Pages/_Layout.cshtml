@@ -71,7 +71,7 @@
                                                 {
                                                     <li><a href="#contact">Find Event</a></li>
                                                     <li><a asp-page="/Speakers">Speakers</a></li>
-                                                    <li><a href="#aboutus">About</a></li>
+                                                    @*<li><a href="#aboutus">About</a></li>*@
                                                     <li><a href="#sponsors">Sponsors</a></li>
                                                     <li authz="true"><a>@Context.User.Identity.Name</a></li>
                                                     <li authz="true">
@@ -79,11 +79,11 @@
                                                     </li>
                                                     @*<li authz="false"><a asp-page="/Login">Log in</a></li>*@
                                                 }
-                                                else if (!@Context.Request.Path.Value.ToLower().Contains("conference"))
+                                                else if (@Context.Request.Path.Value.ToLower().Contains("conference"))
                                                 {
                                                     <li><a href="#speakers">Speakers</a></li>
                                                     <li><a href="#schedule">Schedule</a></li>
-                                                    <li><a href="#aboutus">About</a></li>
+                                                    <li><a href="#contact">About</a></li>
                                                     <li><a href="#sponsors">Sponsors</a></li>
                                                 }
 
