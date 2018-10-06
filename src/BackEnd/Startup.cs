@@ -77,9 +77,11 @@ namespace BackEnd
                 return Task.CompletedTask;
             });
 
-            // Comment out the following line to avoid resetting the database each time
-            var loader = new ConferenceDataLoader(app.ApplicationServices);
-            loader.LoadData();
+            if (Configuration["RESET_DB"] != null && Configuration["RESET_DB"] == "1")
+            {
+                var loader = new ConferenceDataLoader(app.ApplicationServices);
+                loader.LoadData();
+            }
         }
     }
 }

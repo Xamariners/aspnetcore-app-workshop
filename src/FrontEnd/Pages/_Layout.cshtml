@@ -65,7 +65,7 @@
                                     <div id="md-site-navbar" class="collapse navbar-collapse">
                                         <ul class="nav navbar-nav navbar-right">
                                             <li><a asp-page="/Index">Home</a></li>
-                                            @if (@Context.Request.Path.Value.ToLower().Contains("/"))
+                                            @if (@Context.Request.Path.Value.Equals("/"))
                                             {
                                                 <li><a href="#contact">Find Event</a></li>
                                                 <li><a asp-page="/Speakers">Speakers</a></li>
