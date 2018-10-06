@@ -1,11 +1,15 @@
 ﻿@page
 @model LoginModel
 
-<h1>Login</h1>
+<section id="login" class="team-style-3 speaker-section text-align-left width-100 float-left padding-tb-73-92" style="background-image: linear-gradient(rgb(243, 119, 62) 0%, rgb(148, 79, 159) 100%)">
+    <div class="container wow fadeInUp" data-wow-delay="0.5s">
+        <h2 class="text-large-40 text-transform-uppercase font-weight-600 color-black">Login</h2>
 
-<form method="post">
-    @foreach (var scheme in Model.AuthSchemes)
-    {
-        <button class="btn btn-default" type="submit" name="scheme" value="@scheme.Name">@scheme.DisplayName</button>
-    }
-</form>
+        <form method="post">
+            @foreach (var scheme in Model.AuthSchemes)
+            {
+                <button class="btn btn-default" type="submit" name="scheme" value="@scheme.Name">@scheme.DisplayName</button>
+            }
+        </form>
+    </div>
+</section>

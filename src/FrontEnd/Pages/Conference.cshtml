@@ -1,7 +1,8 @@
 ﻿@page "{id}"
+@using Infrastructure
 @model ConferenceModel
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = @Model.Conference.Name;
 }
 
 
@@ -38,8 +39,8 @@
 <!-- Speaker Start -->
 <section id="speakers" class="team-style-3 speaker-section text-align-left width-100 float-left padding-tb-73-92" style="background-color: rgb(233, 233, 233)">
     <div class="container wow fadeInUp" data-wow-delay="0.5s">
-        <h2 class="text-large-40 text-transform-uppercase font-weight-600 color-black">@Model.Speakers Speakers</h2>
-        <h5 class="color-bright-gray font-weight-300 text-medium-22 margin-bottom-43">The best of the best</h5>
+        <h2 class="text-large-40 text-transform-uppercase font-weight-600 color-black">@Model.Speakers.Count() Speakers</h2>
+        <h5 class="color-bright-gray font-weight-300 text-medium-22 margin-bottom-43">All @Model.Conference.Name Speakers</h5>
 
         <div class="team-slider-style-3 speaker-slider dot-style-1 small-dot black-red-dot position-left-dot row">
 
@@ -54,7 +55,7 @@
                     }
 
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 margin-bottom-50 @((i % 2 == 0 && i > 1) ? "clear-both" : "")">
-                        <div class="flex-container display-flex row">
+                        <div class="flex-container display-flex row" style="-webkit-box-align: initial;">
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                 <div class="speaker-image width-100 position-relative">
                                     <img class="border-radius-3 img-object-fit-cover img100 height-100" src="data:image/png;base64, @speaker.Picture" alt="@speaker.Name" />
@@ -69,12 +70,12 @@
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                 <div class="speaker-content">
-                                    <a asp-page="Speaker" asp-route-id="@speaker.ID" class="display-block color-black font-weight-600 text-medium-22 text-transform-capitalize margin-bottom-5">@speaker.Name</a>
+                                    <a asp-page="Speaker" asp-route-id="@speaker.ID" class="pop-it display-block color-black font-weight-600 text-medium-22 text-transform-capitalize margin-bottom-5">@speaker.Name</a>
                                     <span class="color-bright-gray font-weight-400 text-small-16 margin-bottom-15 display-block">@speaker.TagLine</span>
 
                                     @foreach (var session in speaker.Sessions)
                                     {
-                                        <p class="color-black padding-right-50 text-small-16 font-weight-600 no-margin-bottom"><a asp-page="Session" asp-route-id="@session.ID">@session.Title</a></p>
+                                        <p class="color-black padding-right-50 text-small-16 font-weight-600 no-margin-bottom"><a class="pop-it" asp-page="Session" asp-route-id="@session.ID">@session.Title</a></p>
                                     }
 
                                 </div>
@@ -97,7 +98,7 @@
 <!-- Agenda Start -->
 <section id="schedule" class="upcoming-event-style-1 upcoming-event-section width-100 float-left padding-tb-73-80 position-relative text-align-center">
     <div class="container overflow-hidden wow fadeInUp" data-wow-delay="0.5s">
-        <h2 class="text-large-40 text-transform-uppercase font-weight-600 color-black">@Model.Sessions.Count() Sessions</h2>
+        <h2 class="text-large-40 text-transform-uppercase font-weight-600 color-black">@Model.SessionCount Sessions</h2>
         <h5 class="font-weight-300 text-medium-22 margin-bottom-35 color-bright-gray">Find the event schedule below</h5>
 
         <!-- Multi day nav -->
@@ -134,18 +135,18 @@
                                             <div class="outer-triangle position-absolute">
                                                 <div class="inner-triangle position-absolute"></div>
                                             </div>
-                                            <h5 class="color-black margin-bottom-5 font-weight-600 text-medium-22">[@session.Track?.Name] <a asp-page="Session" asp-route-id="@session.ID">@session.Title</a></h5>
-                                            <p class="margin-bottom-22 text-small-16 font-weight-400 color-charcoal-light margin-bottom-25">Available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</p>
+                                            <h5 class="color-black margin-bottom-5 font-weight-600 text-medium-22">[@session.Track?.Name] <a class="pop-it" asp-page="Session" asp-route-id="@session.ID">@session.Title</a></h5>
+                                            <p class="margin-bottom-22 text-small-16 font-weight-400 color-charcoal-light margin-bottom-25">@session.Abstract.Truncate(200, "...", true)</p>
                                             <div class="event-time-speaker-detail" style="padding-right: 10px">
 
                                                 @foreach (var speaker in session.Speakers)
                                                 {
                                                     <div class="speaker-detail display-inline-table">
                                                         <div class="speaker-image img-round-62 float-left bg-medium-gray">
-                                                            <img class="img100 img-round height-100 img-object-fit-cover " src="http://placehold.it/62x62" alt="Upcoming Event Speaker">
+                                                            <img class="img100 img-round height-100 img-object-fit-cover" src="data:image/png;base64, @speaker.Picture" alt="@speaker.Name" />
                                                         </div>
                                                         <div class="speaker-name display-table-cell-vertical-middle height-100">
-                                                            <span class="font-weight-600 color-black text-small-16 display-block"><a asp-page="Speaker" asp-route-id="@speaker.ID">@speaker.Name</a></span>
+                                                            <span class="font-weight-600 color-black text-small-16 display-block"><a class="pop-it" asp-page="Speaker" asp-route-id="@speaker.ID">@speaker.Name</a></span>
                                                             <span class="font-weight-400 color-tomato-red text-small-16 display-block">Speaker</span>
                                                         </div>
                                                     </div>
@@ -153,7 +154,7 @@
 
                                                 <div class="event-detail-button float-right position-relative">
                                                     <span class="bg-black color-white border-radius-25 text-extra-small-12 font-weight-600 linear-transition cursor-pointer">@session.StartTime?.ToString("HH:mm") - @session.EndTime?.ToString("HH:mm")</span>
-                                                    <a class="btn btn-small tomato-pink-btn" href="#">Details</a>
+                                                    <a class="pop-it btn btn-small tomato-pink-btn" asp-page="Session" asp-route-id="@session.ID">Details</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -194,8 +195,7 @@
                 <div class="col-lg-7 col-md-12 col-sm-12 col-xs-12">
                     <div class="contact-form-address-container width-100">
                         <h2 class="text-large-40 font-weight-600 text-transform-uppercase color-black margin-bottom-40 editContent" id="dt-contact2-text-1">@Model.Conference.Name</h2>
-                        <div class="md-contact-form-section form-style-3 width-100 float-left margin-bottom-40">
-                        </div>
+
                         <div class="contact-address width-100">
                             <span class="color-black color-black margin-bottom-5 font-weight-600 text-medium-22" id="dt-contact2-text-2">Date</span>
                             <p class="color-charcoal-light text-small-16 font-weight-400 margin-bottom-35 editContent" id="dt-contact2-text-3">@Model.Conference.StartDate.ToLongDateString()</p>
@@ -207,44 +207,41 @@
 
                         <div class="contact-address width-100">
                             <span class="color-black color-black margin-bottom-5 font-weight-600 text-medium-22" id="dt-contact2-text-2">Event Team</span>
-                            <p>
-                                @foreach (var organiser in Model.Conference.ConferenceOrganisers)
-                                {
-                                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 margin-bottom-50">
-                                        <div class="flex-container display-flex row">
-                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                                <div class="speaker-image width-100 position-relative">
-                                                    <img class="border-radius-3 img-object-fit-cover img100 height-100" src="data:image/png;base64, @organiser.Picture" alt="@organiser.Name" />
-                                                    <div class="social-media-icons white-gray-icon small-icon-20 gradient-orange-pink position-absolute height-100 width-100 position-top display-table border-radius-3 linear-transition opacity-0">
-                                                        <ul class="md-person-social list-group text-align-center display-table-cell-vertical-middle">
-                                                            <li class="list-group-item"><a href="@organiser.WebSite" target="_blank"><span><i class="fa fa-globe" aria-hidden="true"></i></span></a></li>
-                                                            <li class="list-group-item"><a href="@organiser.Twitter" target="_blank"><span><i class="fa fa-twitter" aria-hidden="true"></i></span></a></li>
-                                                            <li class="list-group-item"><a href="@organiser.LinkedIn" target="_blank"><span><i class="fa fa-linkedin" aria-hidden="true"></i></span></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="">
-                                                <div class="speaker-content">
+                        </div>
 
+                        <div class="contact-address width-100">
+                            @foreach (var organiser in Model.Conference.ConferenceOrganisers)
+                            {
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 margin-bottom-50">
+                                    <div class="flex-container display-flex row">
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                            <div class="speaker-image width-100 position-relative">
+                                                <img class="border-radius-3 img-object-fit-cover img100 height-100" src="data:image/png;base64, @organiser.Picture" alt="@organiser.Name" />
+                                                <div class="social-media-icons white-gray-icon small-icon-20 gradient-orange-pink position-absolute height-100 width-100 position-top display-table border-radius-3 linear-transition opacity-0">
+                                                    <ul class="md-person-social list-group text-align-center display-table-cell-vertical-middle">
+                                                        <li class="list-group-item"><a href="@organiser.WebSite" target="_blank"><span><i class="fa fa-globe" aria-hidden="true"></i></span></a></li>
+                                                        <li class="list-group-item"><a href="@organiser.Twitter" target="_blank"><span><i class="fa fa-twitter" aria-hidden="true"></i></span></a></li>
+                                                        <li class="list-group-item"><a href="@organiser.LinkedIn" target="_blank"><span><i class="fa fa-linkedin" aria-hidden="true"></i></span></a></li>
+                                                    </ul>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="contact-number width-100">
-                                        <span class="color-black text-small-16 font-weight-600 margin-bottom-5 display-block editContent" id="dt-contact2-text-6">
-                                            @organiser.Name
-                                        </span>
+                                </div>
+                                <div class="contact-number width-100">
+                                    <span class="color-black text-small-16 font-weight-600 margin-bottom-5 display-block editContent" id="dt-contact2-text-6">
+                                        @organiser.Name
+                                    </span>
 
-                                        <p class="color-charcoal-light text-small-16 font-weight-400 no-margin-bottom editContent" id="dt-contact2-text-7">
-                                            @organiser.TagLine
-                                        </p>
-                                        <p class="color-charcoal-light text-small-16 font-weight-400 no-margin-bottom editContent" id="dt-contact2-text-7">
-                                            @organiser.Email
-                                        </p>
-                                    </div>
-                                }
-                            </p>
+                                    <p class="color-charcoal-light text-small-16 font-weight-400 no-margin-bottom editContent" id="dt-contact2-text-7">
+                                        @organiser.TagLine
+                                    </p>
+                                    <p class="color-charcoal-light text-small-16 font-weight-400 no-margin-bottom editContent" id="dt-contact2-text-7">
+                                        @organiser.Email
+                                    </p>
+                                </div>
+                            }
+
                         </div>
                     </div>
                 </div>
@@ -319,6 +316,4 @@
         });
 
     </script>
-
-
 }

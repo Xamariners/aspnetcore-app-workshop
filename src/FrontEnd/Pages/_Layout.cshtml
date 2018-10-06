@@ -63,35 +63,33 @@
                                     </div>
 
                                     <div id="md-site-navbar" class="collapse navbar-collapse">
-                                        <ul class="nav navbar-nav navbar-right">
-                                            <li><a asp-page="/Index">Home</a></li>
-                                            @if (@Context.Request.Path.Value.Equals("/"))
-                                            {
-                                                <li><a href="#contact">Find Event</a></li>
-                                                <li><a asp-page="/Speakers">Speakers</a></li>
-                                                <li><a href="#aboutus">About</a></li>
-                                                <li><a href="#sponsors">Sponsors</a></li>
-                                            }
-                                            else if (!@Context.Request.Path.Value.ToLower().Contains("conference"))
-                                            {
-                                                <li><a href="#speakers">Speakers</a></li>
-                                                <li><a href="#schedule">Schedule</a></li>
-                                                <li><a href="#aboutus">About</a></li>
-                                                <li><a href="#sponsors">Sponsors</a></li>
-                                            }
-
-                                            <li authz="true"><a asp-page="/MyAgenda">My Agenda</a></li>
-                                        </ul>
-
-                                        @*<form asp-controller="account" asp-action="logout" method="post" id="logoutForm" class="navbar-right">
+                                        
+                                        <form asp-controller="account" asp-action="logout" method="post" id="logoutForm" class="navbar-right">
                                             <ul class="nav navbar-nav navbar-right">
-                                                <li authz="true"><a>@Context.User.Identity.Name</a></li>
-                                                <li authz="true">
-                                                    <button type="submit" class="btn btn-link navbar-btn navbar-link">Log out</button>
-                                                </li>
-                                                <li authz="false"><a asp-page="/Login">Log in</a></li>
+                                                <li><a asp-page="/Index">Home</a></li>
+                                                @if (@Context.Request.Path.Value.Equals("/"))
+                                                {
+                                                    <li><a href="#contact">Find Event</a></li>
+                                                    <li><a asp-page="/Speakers">Speakers</a></li>
+                                                    <li><a href="#aboutus">About</a></li>
+                                                    <li><a href="#sponsors">Sponsors</a></li>
+                                                    <li authz="true"><a>@Context.User.Identity.Name</a></li>
+                                                    <li authz="true">
+                                                        <button type="submit" class="btn btn-link navbar-btn navbar-link">Log out</button>
+                                                    </li>
+                                                    @*<li authz="false"><a asp-page="/Login">Log in</a></li>*@
+                                                }
+                                                else if (!@Context.Request.Path.Value.ToLower().Contains("conference"))
+                                                {
+                                                    <li><a href="#speakers">Speakers</a></li>
+                                                    <li><a href="#schedule">Schedule</a></li>
+                                                    <li><a href="#aboutus">About</a></li>
+                                                    <li><a href="#sponsors">Sponsors</a></li>
+                                                }
+
+                                                <li authz="true"><a asp-page="/MyAgenda">My Agenda</a></li>
                                             </ul>
-                                        </form>*@
+                                        </form>
                                     </div>
                                 </nav>
                             </div>

@@ -1,23 +1,44 @@
 @page "{id}"
 @model SpeakerModel
+@{
+    Layout = null;
+}
 
-<ol class="breadcrumb">
-    <li><a asp-page="/Speakers">Speakers</a></li>
-    <li class="active">@Model.Speaker.Name</li>
-</ol>
+<section id="speaker" class="team-style-3 speaker-section text-align-left float-right padding-tb-73-92" style="background-image: linear-gradient(rgb(243, 119, 62) 0%, rgb(148, 79, 159) 100%)">
+    <div class="container">
+        
+        @*<ol class="breadcrumb">
+            <li><a asp-page="/Speakers">Speakers</a></li>
+            <li class="active">@Model.Speaker.Name</li>
+        </ol>*@
+        
+        <h2 class="text-large-40 text-transform-uppercase font-weight-600 color-black">@Model.Speaker.Name</h2>
+        
+        <div class="flex-container display-flex row">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <div class="speaker-image width-100 position-relative">
+                    <img class="border-radius-3 img-object-fit-cover img100 height-100" src="data:image/png;base64, @Model.Speaker.Picture" alt="@Model.Speaker.Name" />
+                    <div class="social-media-icons white-gray-icon small-icon-20 gradient-orange-pink position-absolute height-100 width-100 position-top display-table border-radius-3 linear-transition opacity-0">
+                        <ul class="md-person-social list-group text-align-center display-table-cell-vertical-middle">
+                            <li class="list-group-item"><a href="@Model.Speaker.WebSite" target="_blank"><span><i class="fa fa-globe" aria-hidden="true"></i></span></a></li>
+                            <li class="list-group-item"><a href="@Model.Speaker.Twitter" target="_blank"><span><i class="fa fa-twitter" aria-hidden="true"></i></span></a></li>
+                            <li class="list-group-item"><a href="@Model.Speaker.LinkedIn" target="_blank"><span><i class="fa fa-linkedin" aria-hidden="true"></i></span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <div class="speaker-content">
+                    <span class="color-black weight-400 text-small-16 margin-bottom-15 display-block">@Model.Speaker.TagLine</span>
+                    <span class="color-black weight-400 text-small-16 margin-bottom-15 display-block">@Model.Speaker.Bio</span>
 
-<h2>@Model.Speaker.Name</h2>
+                    @foreach (var session in Model.Speaker.Sessions)
+                    {
+                        <p class="color-black padding-right-50 text-small-16 font-weight-600 no-margin-bottom"><a asp-page="Session" asp-route-id="@session.ID">@session.Title</a></p>
+                    }
 
-<p>@Model.Speaker.Bio</p>
-
-<h3>Sessions</h3>
-<div class="row">
-    <div class="col-md-5">
-        <ul class="list-group">
-            @foreach (var session in Model.Speaker.Sessions)
-            {
-                <li class="list-group-item"><a asp-page="Session" asp-route-id="@session.ID">@session.Title</a></li>
-            }
-        </ul>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
+</section>

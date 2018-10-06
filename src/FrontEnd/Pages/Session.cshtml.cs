@@ -44,10 +44,10 @@ namespace FrontEnd.Pages
 
             DayOffset = Session.StartTime?.Subtract(startDate ?? DateTimeOffset.MinValue).Days;
 
-            if (!string.IsNullOrEmpty(Session.Abstract))
-            {
-                Session.Abstract = "<p>" + String.Join("</p><p>", Session.Abstract.Split("\r\n", StringSplitOptions.RemoveEmptyEntries)) + "</p>";
-            }
+            //if (!string.IsNullOrEmpty(Session.Abstract))
+            //{
+            //    Session.Abstract = String.Join("</p><p>", Session.Abstract.Split("\r\n", StringSplitOptions.RemoveEmptyEntries)) + "</p>";
+            //}
 
             return Page();
         }

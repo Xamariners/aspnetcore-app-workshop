@@ -1,37 +1,59 @@
 @page "{id}"
 @model SessionModel
 
-<ol class="breadcrumb">
-    <li><a asp-page="/Index">Agenda</a></li>
-    <li><a asp-page="/Index" asp-route-day="@Model.DayOffset">Day @(Model.DayOffset + 1)</a></li>
-    <li class="active">@Model.Session.Title</li>
-</ol>
-
-<h1>@Model.Session.Title</h1>
-<span class="label label-default">@Model.Session.Track?.Name</span>
-
-@foreach (var speaker in Model.Session.Speakers)
-{
-    <em><a asp-page="Speaker" asp-route-id="@speaker.ID">@speaker.Name</a></em>
+@{
+    Layout = null;
 }
 
-<p>@Html.Raw(Model.Session.Abstract)</p>
+<section id="session" class="team-style-3 speaker-section text-align-left float-right" style="background-image: linear-gradient(rgb(243, 119, 62) 0%, rgb(148, 79, 159) 100%)">
+    <div class="container">
+        
+        <div class="col-lg-10 col-md-10 col-sm-9 col-xs-12">
+            <div class="event-detail-content float-left position-relative padding-tb-lr-20-30 text-align-left border-radius-5">
+                <div class="outer-triangle position-absolute">
+                    <div class="inner-triangle position-absolute"></div>
+                </div>
+                <h5 class="color-black margin-bottom-5 font-weight-600 text-medium-22"><span class="label label-default">@Model.Session.Track?.Name</span> <a class="pop-it" asp-page="Session" asp-route-id="@Model.Session.ID">@Model.Session.Title</a></h5>
+                <p class="margin-bottom-22 text-small-16 font-weight-400 color-black margin-bottom-25">@Model.Session.Abstract</p>
+                <div class="event-time-speaker-detail" style="padding-right: 10px">
 
-<form method="post">
-    <input type="hidden" name="sessionId" value="@Model.Session.ID" />
-    <p>
-        <a authz-policy="Admin" asp-page="/Admin/EditSession" asp-route-id="@Model.Session.ID" class="btn btn-default btn-sm">Edit</a>
-        @if (Model.IsInPersonalAgenda)
-        {
-            <button authz="true" type="submit" asp-page-handler="Remove" class="btn btn-default btn-sm" title="Remove from my personal agenda">
-                <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-            </button>
-        }
-        else
-        {
-            <button authz="true" type="submit" class="btn btn-default btn-sm" title="Add to my personal agenda">
-                <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
-            </button>
-        }
-    </p>
-</form>
+                    @foreach (var speaker in @Model.Session.Speakers)
+                    {
+                        <div class="speaker-detail display-inline-table">
+                            @*<div class="speaker-image img-round-62 float-left bg-medium-gray">
+                                <img class="img100 img-round height-100 img-object-fit-cover" src="data:image/png;base64, @speaker.Picture" alt="@speaker.Name" />
+                            </div>*@
+                            <div class="speaker-name display-table-cell-vertical-middle height-100">
+                                <span class="font-weight-600 color-black text-small-16 display-block"><a class="pop-it" asp-page="Speaker" asp-route-id="@speaker.ID">@speaker.Name</a></span>
+                                <span class="font-weight-400 color-tomato-red text-small-16 display-block">Speaker</span>
+                            </div>
+                        </div>
+                    }
+
+                    @*<div class="event-detail-button float-right position-relative">
+                        <span class="bg-black color-white border-radius-25 text-extra-small-12 font-weight-600 linear-transition cursor-pointer">@Model.Session.StartTime?.ToString("HH:mm") - @Model.Session.EndTime?.ToString("HH:mm")</span>
+                    </div>*@
+                </div>
+            </div>
+        </div>
+
+        <form method="post">
+            <input type="hidden" name="sessionId" value="@Model.Session.ID" />
+            <p>
+                <a authz-policy="Admin" asp-page="/Admin/EditSession" asp-route-id="@Model.Session.ID" class="btn btn-default btn-sm">Edit</a>
+                @if (Model.IsInPersonalAgenda)
+                {
+                    <button authz="true" type="submit" asp-page-handler="Remove" class="btn btn-default btn-sm" title="Remove from my personal agenda">
+                        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                    </button>
+                }
+                else
+                {
+                    <button authz="true" type="submit" class="btn btn-default btn-sm" title="Add to my personal agenda">
+                        <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+                    </button>
+                }
+            </p>
+        </form>
+    </div>
+</section>

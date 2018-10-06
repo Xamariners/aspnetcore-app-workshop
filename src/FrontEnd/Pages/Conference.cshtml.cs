@@ -42,9 +42,7 @@ namespace FrontEnd.Pages
 
         public bool ShowMessage => !string.IsNullOrEmpty(Message);
 
-        public string EventScheduleTitle => "EVENT SCHEDULE";
-
-        public string EventScheduleDescription => "EVENT DESCRIPTION...";
+        public int SessionCount { get; set; }
 
         protected virtual Task<List<SessionResponse>> GetSessionsAsync()
         {
@@ -64,7 +62,7 @@ namespace FrontEnd.Pages
             UserSessions = userSessions.Select(u => u.ID).ToList();
 
             var sessions = await GetSessionsAsync();
-
+            
             var startDate = sessions.Min(s => s.StartTime?.Date);
             var endDate = sessions.Max(s => s.EndTime?.Date);
 
@@ -75,12 +73,20 @@ namespace FrontEnd.Pages
 
             var filterDate = startDate?.AddDays(day);
 
+            Speakers = await _apiClient.GetConferenceSpeakersAsync(Conference.ID);
+
+            foreach (var session in sessions)
+            {
+                foreach (var speaker in session.Speakers)
+                    speaker.Picture = Speakers.FirstOrDefault(x => x.ID == speaker.ID)?.Picture;
+            }
+
             Sessions = sessions.Where(s => s.StartTime?.Date == filterDate)
                                .OrderBy(s => s.TrackId)
                                .GroupBy(s => s.StartTime)
                                .OrderBy(g => g.Key);
-            
-            Speakers = await _apiClient.GetConferenceSpeakersAsync(Conference.ID);
+
+            SessionCount = sessions.Count;
 
             Sponsors = await _apiClient.GetConferenceSponsorsAsync(Conference.ID);
 

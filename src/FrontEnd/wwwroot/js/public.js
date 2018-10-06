@@ -927,6 +927,14 @@ $('.video-popup').magnificPopup({
   type: 'iframe',
 });
 
+/* Magnific Popup for ajax */
+$(document).ready(function() {
+
+    $('.pop-it').magnificPopup({
+        type: 'ajax'
+    });
+});
+
 
 
 /* Viewport width and height with custom scrollbar */
