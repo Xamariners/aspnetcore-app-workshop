@@ -12,8 +12,8 @@
       "commandName": "IISExpress",
       "launchBrowser": true,
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development",
-        "AASPNETCORE_HTTPS_PORT": "44360"
+        "AASPNETCORE_HTTPS_PORT": "44360",
+        "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
     "BackEnd": {
@@ -21,6 +21,11 @@
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
+    },
+    "Docker": {
+      "commandName": "Docker",
+      "launchBrowser": true,
+      "launchUrl": "{Scheme}://{ServiceHost}"
     }
   }
 }

@@ -19,7 +19,7 @@ namespace BackEnd
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .UseUrls("http://localhost:56009")
+                //.UseUrls("http://localhost:56009")
                 .UseStartup<Startup>();
                 
     }
