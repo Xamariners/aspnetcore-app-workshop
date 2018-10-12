@@ -24,13 +24,11 @@ namespace BackEnd.Data.Setup
 
         public void LoadData()
         {
-     
-
             using (var scope = _Services.CreateScope())
             {
                 var db = scope.ServiceProvider.GetService<ApplicationDbContext>();
 
-                db.Database.EnsureDeleted();
+                //db.Database.EnsureDeleted();
                 db.Database.EnsureCreated();
 
                 LoadFormattedData(db);

@@ -62,7 +62,7 @@ namespace BackEnd.Data.Setup
                 var speakers = JsonConvert.DeserializeObject<List<Speaker>>(speakersJson);
 
                 foreach (var speaker in speakers)
-                    speaker.Picture = GetBase64StringForImage($"{dir}/Images/Speakers/{speaker.ID}.png");
+                    speaker.Picture = GetBase64StringForImage($"{dir}/Images/Speakers/{speaker.ID}.jpg");
 
                 db.Speakers.AddRange(speakers);
 
@@ -73,7 +73,7 @@ namespace BackEnd.Data.Setup
                 conference.ConferenceOrganisers = new List<ConferenceOrganiser>();
                 foreach (var organiser in organisers)
                 {
-                    organiser.Picture = GetBase64StringForImage($"{dir}/Images/Organisers/{organiser.ID}.png");
+                    organiser.Picture = GetBase64StringForImage($"{dir}/Images/Organisers/{organiser.ID}.jpg");
                     organiser.ConferenceID = conference.ID;
                     conference.ConferenceOrganisers.Add(organiser);
                 }
@@ -100,6 +100,7 @@ namespace BackEnd.Data.Setup
                     var session = new Session
                     {
                         Conference = conference,
+                        ConferenceID = conference.ID,
                         Title = item["title"].Value<string>(),
                         StartTime = item["startTime"].Value<DateTime>(),
                         EndTime = item["endTime"].Value<DateTime>(),

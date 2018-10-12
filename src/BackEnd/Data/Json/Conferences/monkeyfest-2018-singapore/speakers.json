@@ -1,52 +1,62 @@
 ﻿[
   {
+    "id": "1470c520-a226-4758-9929-9ef0e25937f1",
+    "name": "Laurent Bugnion",
+    "bio": "I work as Senior Global Azure Advocate for Microsoft after almost 10 years spent working for IdentityMine and Valorem, two leading firms in Microsoft technologies. I am one of the foremost experts for XAML and C# based development. I code in Windows, WPF, Xamarin (iOS and Android), Unity, ASP.NET. On my free time, I write for technical publications such as MSDN Magazine, and my blog is on blog.galasoft.ch. I am a frequent speaker at conferences such as Microsoft MIX, TechEd, VSLive, TechDays and many other international events. Prior to joining Microsoft, I was a Microsoft Most Valuable Professional for Windows development from 2007 to 2017, a Microsoft Regional Director from 2013 and a Xamarin Most Valuable Professional from 2015. I am also the author of the well-known open source framework MVVM Light for Windows, WPF, Xamarin, and of the popular Pluralsight reference course about MVVM Light.",
+    "tagLine": "Cloud Developer Advocate @ Microsoft ",
+    "webSite": "http://blog.galasoft.ch",
+    "twitter": "https://twitter.com/lbugnion",
+    "linkedin": "https://www.linkedin.com/in/lbugnion/",
+    "order": 0
+  },
+  {
     "id": "1470c520-a226-4758-9929-9ef0e25937fc",
     "name": "Ben Ishiyama-Levy",
     "bio": "Ben is an Agile Technologist / Serial Entrepreneur with teratons of hands on in IT management, architecture, scrummatology, cucumberism, rock'n'roll and anything fun and trending. He is the Director at Xamariners where he orchestrates the baking of tasty app, and likes to make up funky recipes. He leads the .Net Mobile Developers User group in Singapore, and speaks about Xamarin internationally.He does not usually speaks in the third person.",
     "tagLine": "Microsoft & Xamarin MVP | Agile Technologist | International Speaker | CEO @ Xamariners",
-    "webSite": "http://www.monkeyfest.io",
-    "twitter": "xamariner",
-    "linkedin": "https://www.linkedin.com/in/ben-ishiyama-levy/",
-    "order": 0 
-  },
-  {
-    "id": "1470c520-a226-4758-9929-9ef0e25937f1",
-    "name": "Bob Ishiyama-Levy",
-    "bio": "Ben is an Agile Technologist / Serial Entrepreneur with teratons of hands on in IT management, architecture, scrummatology, cucumberism, rock'n'roll and anything fun and trending. He is the Director at Xamariners where he orchestrates the baking of tasty app, and likes to make up funky recipes. He leads the .Net Mobile Developers User group in Singapore, and speaks about Xamarin internationally.He does not usually speaks in the third person.",
-    "tagLine": "Microsoft & Xamarin MVP | Agile Technologist | International Speaker | CEO @ Xamariners",
-    "webSite": "http://www.monkeyfest.io",
-    "twitter": "xamariner",
+    "webSite": "http://www.xamariners.com",
+    "twitter": "https://twitter.com/xamariner",
     "linkedin": "https://www.linkedin.com/in/ben-ishiyama-levy/",
     "order": 1 
   },
   {
     "id": "1470c520-a226-4758-9929-9ef0e25937f2",
-    "name": "Joe Ishiyama-Levy",
+    "name": "Riza Marhaban",
     "bio": "Ben is an Agile Technologist / Serial Entrepreneur with teratons of hands on in IT management, architecture, scrummatology, cucumberism, rock'n'roll and anything fun and trending. He is the Director at Xamariners where he orchestrates the baking of tasty app, and likes to make up funky recipes. He leads the .Net Mobile Developers User group in Singapore, and speaks about Xamarin internationally.He does not usually speaks in the third person.",
-    "tagLine": "Microsoft & Xamarin MVP | Agile Technologist | International Speaker | CEO @ Xamariners",
-    "webSite": "http://www.monkeyfest.io",
-    "twitter": "xamariner",
-    "linkedin": "https://www.linkedin.com/in/ben-ishiyama-levy/",
+    "tagLine": "Microsoft MVP | Community Leader | Developer and Architect",
+    "webSite": "https://www.rizamarhaban.com/",
+    "twitter": "https://twitter.com/rizamarhaban",
+    "linkedin": "https://www.linkedin.com/in/rizamarhaban/",
     "order": 2 
   },
   {
     "id": "1470c520-a226-4758-9929-9ef0e25937f3",
-    "name": "Dan Ishiyama-Levy",
-    "bio": "Ben is an Agile Technologist / Serial Entrepreneur with teratons of hands on in IT management, architecture, scrummatology, cucumberism, rock'n'roll and anything fun and trending. He is the Director at Xamariners where he orchestrates the baking of tasty app, and likes to make up funky recipes. He leads the .Net Mobile Developers User group in Singapore, and speaks about Xamarin internationally.He does not usually speaks in the third person.",
-    "tagLine": "Microsoft & Xamarin MVP | Agile Technologist | International Speaker | CEO @ Xamariners",
-    "webSite": "http://www.monkeyfest.io",
-    "twitter": "xamariner",
-    "linkedin": "https://www.linkedin.com/in/ben-ishiyama-levy/",
+    "name": "Eng Teong Cheah",
+    "bio": "Eng Teong graduated in Computer Science, where he fulfilled the role of Microsoft Student Partner, and at the later stage, Xamarin Student Ambassador. Eng Teong writes technical blog, and back in 2016 he founded, and now leads, a developer community based in Malaysia called the Xamarin Malaysia Developers aka Malaysia Mobile .NET Developers Group. Along with the other co-organizer, he organizes free technical events about Microsoft technologies. Eng Teong took part as speaker in many nationwide technical events, such Visual Studio Party, Xamarin Dev Days - Kuala Lumpur from 2015 to 2016. He's been a Microsoft MVP on the Windows Development since 2015 and MVP on Visual Studio and Development Technologies since 2016.",
+    "tagLine": "Microsoft MVP in Developer Technologies | Malaysia Xamarin Group Leader | Speaker | Tech Enthusiast",
+    "webSite": "",
+    "twitter": "",
+    "linkedin": "https://www.linkedin.com/in/engteongcheah/",
     "order": 3 
   },
    {
     "id": "1470c520-a226-4758-9929-9ef0e25937f5",
-    "name": "Bert Ishiyama-Levy",
-    "bio": "Bert is an Agile Technologist / Serial Entrepreneur with teratons of hands on in IT management, architecture, scrummatology, cucumberism, rock'n'roll and anything fun and trending. He is the Director at Xamariners where he orchestrates the baking of tasty app, and likes to make up funky recipes. He leads the .Net Mobile Developers User group in Singapore, and speaks about Xamarin internationally.He does not usually speaks in the third person.",
-    "tagLine": "Microsoft & Xamarin MVP | Agile Technologist | International Speaker | CEO @ Xamariners",
-    "webSite": "http://www.monkeyfest.io",
-    "twitter": "xamariner",
-    "linkedin": "https://www.linkedin.com/in/ben-ishiyama-levy/",
+    "name": "Eng Soon Cheah",
+    "bio": "Eng Soon is a 4-time Microsoft MVP and has nearly 5 years of experience building enterprise system in the cloud. He is also a Certified in Microsoft Azure and he is Co-Organizer of Malaysia Mobile .Net Developers Group.He is the person whose also like the Developers Security and Cloud Security.",
+    "tagLine": "Microsoft MVP (Developer Technologies) | Speaker | Cloud Security Enthusiast",
+    "webSite": "",
+    "twitter": "",
+    "linkedin": "https://www.linkedin.com/in/cheahengsoon/",
     "order": 4 
+  },
+   {
+    "id": "1470c520-a226-4758-9929-9ef0e25937af",
+    "name": "Conference Monkey",
+    "bio": "Purveyor of Fine Monkey Business",
+    "tagLine": "",
+    "webSite": "",
+    "twitter": "",
+    "linkedin": "",
+    "order": 100 
   }
 ]

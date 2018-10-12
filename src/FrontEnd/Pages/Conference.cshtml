@@ -19,7 +19,7 @@
     <div class="md-color-overlay gradient-orange-pink"></div>
     <div class="jumbotron bg-transparent height-100 position-relative">
         <div class="container height-100">
-            <div class="md-banner-content margin-lr-auto wow fadeInUp" data-wow-delay="0.5s">
+            <div class="md-banner-content margin-lr-auto" >
                 <div class="md-bannertext-img md-banner-content-cell-middle height-100">
                     <div class="banner-event-date-venue color-white font-weight-600 text-small-16 position-relative display-table margin-lr-auto margin-bottom-35">
                         <span class="event-date display-inline-block position-relative editContent" id="dt-head2-1" style="color:rgb(255, 255, 255);font-size:16px;background-color:rgba(0, 0, 0, 0);font-family:Poppins, sans-serif;font-weight:600;text-transform:none;"><i class="fa fa-calendar icon-style" aria-hidden="true"></i> @Model.Conference.StartDate.ToLongDateString()</span>
@@ -38,11 +38,11 @@
 <!-- Banner End -->
 <!-- Speaker Start -->
 <section id="speakers" class="team-style-3 speaker-section text-align-left width-100 float-left padding-tb-73-92" style="background-color: rgb(233, 233, 233)">
-    <div class="container wow fadeInUp" data-wow-delay="0.5s">
+    <div class="container" >
         <h2 class="text-large-40 text-transform-uppercase font-weight-600 color-black">@Model.Speakers.Count() Speakers</h2>
         <h5 class="color-bright-gray font-weight-300 text-medium-22 margin-bottom-43">All @Model.Conference.Name Speakers</h5>
 
-        <div class="team-slider-style-3 speaker-slider dot-style-1 small-dot black-red-dot position-left-dot row">
+        <div class="team-slider-style-2 speaker-slider dot-style-1 small-dot black-red-dot position-left-dot row">
 
             @{int i = 0;}
 
@@ -97,7 +97,7 @@
 <!-- Speaker End -->
 <!-- Agenda Start -->
 <section id="schedule" class="upcoming-event-style-1 upcoming-event-section width-100 float-left padding-tb-73-80 position-relative text-align-center">
-    <div class="container overflow-hidden wow fadeInUp" data-wow-delay="0.5s">
+    <div class="container overflow-hidden" >
         <h2 class="text-large-40 text-transform-uppercase font-weight-600 color-black">@Model.SessionCount Sessions</h2>
         <h5 class="font-weight-300 text-medium-22 margin-bottom-35 color-bright-gray">Find the event schedule below</h5>
 
@@ -145,10 +145,13 @@
                                                         <div class="speaker-image img-round-62 float-left bg-medium-gray">
                                                             <img class="img100 img-round height-100 img-object-fit-cover" src="data:image/png;base64, @speaker.Picture" alt="@speaker.Name" />
                                                         </div>
-                                                        <div class="speaker-name display-table-cell-vertical-middle height-100">
-                                                            <span class="font-weight-600 color-black text-small-16 display-block"><a class="pop-it" asp-page="Speaker" asp-route-id="@speaker.ID">@speaker.Name</a></span>
-                                                            <span class="font-weight-400 color-tomato-red text-small-16 display-block">Speaker</span>
-                                                        </div>
+                                                        @if (speaker.Order != -1)
+                                                        {
+                                                            <div class="speaker-name display-table-cell-vertical-middle height-100">
+                                                                <span class="font-weight-600 color-black text-small-16 display-block"><a class="pop-it" asp-page="Speaker" asp-route-id="@speaker.ID">@speaker.Name</a></span>
+                                                                <span class="font-weight-400 color-tomato-red text-small-16 display-block">Speaker</span>
+                                                            </div>
+                                                        }
                                                     </div>
                                                 }
 
@@ -185,7 +188,7 @@
 <!-- Agenda End -->
 <!-- Conference Details / Map Start -->
 <section id="contact" class="contactus-style-2 md-contactus position-relative width-100 float-left" style="background-color: rgb(233, 233, 233)">
-    <div class="container-fluid wow fadeInUp" data-wow-delay="0.5s">
+    <div class="container-fluid" >
         <div class="row">
             <div class="flex-container display-flex">
                 <div class="col-lg-5 col-md-12 col-sm-12 col-xs-12 no-padding-lr">
@@ -252,7 +255,7 @@
 <!-- Conference Details / Map  Ends -->
 <!-- Sponsors start -->
 <section id="sponsors" class="logoshowcase-style-2 md-logoshowcase-section text-align-center width-100 padding-tb-73-50 display-inline-block header-bg">
-    <div class="container wow fadeInUp" data-wow-delay="0.5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInUp;">
+    <div class="container"  style="visibility: visible;">
         <h2 class="text-large-40 text-transform-uppercase font-weight-600 color-black editContent" id="dt-partner2-title-1">Event Sponsors</h2>
         <h5 class="font-weight-300 text-medium-22 margin-bottom-45 color-bright-gray editContent" id="dt-partner2-title-2">Thanks to them, we got this event up and running</h5>
 

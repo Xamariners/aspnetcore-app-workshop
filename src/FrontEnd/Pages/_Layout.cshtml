@@ -24,7 +24,6 @@
         <link rel="stylesheet" type="text/css" href="~/css/simplyCountdown.theme.default.css">
         <link rel="stylesheet" type="text/css" href="~/css/TimeCircles.css">
         <link rel="stylesheet" type="text/css" href="~/css/elements.css">
-        <link rel="stylesheet" type="text/css" href="~/css/base.css">
         <link rel="stylesheet" type="text/css" href="~/css/media.css">
         <link rel="stylesheet" href="~/css/site.css" />
     </environment>
@@ -33,6 +32,7 @@
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/css/base.css" asp-append-version="true" />
     </environment>
 </head>
 
@@ -40,7 +40,7 @@
     <div class="md-site-wraper">
 
         <!-- Header start -->
-        <header id="md-header" class="md-site-header md-header-style-1 gradient-menu position-fixed width-100 z-index-999 wow fadeInUp" data-wow-delay="0.5s">
+        <header id="md-header" class="md-site-header md-header-style-1 gradient-menu position-fixed width-100 z-index-999" >
             <div class="md-logo-navbar width-100 float-left linear-transition">
                 <div class="container">
                     <div class="row">
@@ -107,19 +107,19 @@
 
         <!-- Footer Start -->
                         <footer id="footer" class="footer-style-3 md-footer width-100 float-left text-align-center padding-tb-73-71 position-relative"  style="background-image: linear-gradient(rgb(148, 79, 159) 0%, rgb(148, 79, 159) 100%)">
-                            <div class="container position-relative wow fadeInUp" data-wow-delay="0.5s">
+                            <div class="container position-relative" >
                                 <div class="row">
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                         
                                         <div class="md-social-menu width-100 float-left social-media-icons social-rounded-bg margin-bottom-25">
-                                            <ul class="list-group list-style-none wow fadeInUp" data-wow-delay="0.5s">
+                                            <ul class="list-group list-style-none" >
                                                 <li class="list-group-item"><a href="#" target="_blank"><i class="fa fa-globe" aria-hidden="true"></i></a></li>
                                                 <li class="list-group-item"><a href="#" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
                                                 <li class="list-group-item"><a href="#" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
                                             </ul>
                                         </div>
                                         <div class="md-copyright width-100 float-left text-small-16 font-weight-400 color-white position-relative">
-                                            <div class="wow fadeInUp">
+                                            <div>
                                                 <span class="display-inline-block">powered by</span> <a class="color-white text-small-16 font-weight-600" href="http://xamariners.com/" target="_blank">Xamariners</a>
                                             </div>
                                         </div>

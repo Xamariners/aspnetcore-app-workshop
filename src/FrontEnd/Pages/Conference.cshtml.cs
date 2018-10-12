@@ -73,13 +73,15 @@ namespace FrontEnd.Pages
 
             var filterDate = startDate?.AddDays(day);
 
-            Speakers = await _apiClient.GetConferenceSpeakersAsync(Conference.ID);
+            var speakers = await _apiClient.GetConferenceSpeakersAsync(Conference.ID);
 
             foreach (var session in sessions)
             {
                 foreach (var speaker in session.Speakers)
-                    speaker.Picture = Speakers.FirstOrDefault(x => x.ID == speaker.ID)?.Picture;
+                    speaker.Picture = speakers.FirstOrDefault(x => x.ID == speaker.ID)?.Picture;
             }
+
+            Speakers = speakers.Where(x => x.Order != -1).ToList();
 
             Sessions = sessions.Where(s => s.StartTime?.Date == filterDate)
                                .OrderBy(s => s.TrackId)

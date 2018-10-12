@@ -49,6 +49,7 @@ namespace BackEnd.Data
                 WebSite = speaker.WebSite,
                 Twitter = speaker.Twitter,
                 LinkedIn = speaker.LinkedIn,
+                Order = speaker.Order,
                 Sessions = speaker.SessionSpeakers?
                     .Select(ss =>
                         new ConferenceDTO.Session

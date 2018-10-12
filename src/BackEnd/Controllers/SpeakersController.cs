@@ -22,8 +22,10 @@ namespace BackEnd.Controllers
         public async Task<IActionResult> GetSpeakers()
         {
             var speakers = await _db.Speakers.AsNoTracking()
+                                            .Where(x => x.Order != -1)
+                                            .OrderBy(x => x.Order)
                                              .Include(s => s.SessionSpeakers)
-                                                .ThenInclude(ss => ss.Session)
+                                             .ThenInclude(ss => ss.Session)
                                              .ToListAsync();
 
             var result = speakers.Select(s => s.MapSpeakerResponse());
@@ -51,6 +53,7 @@ namespace BackEnd.Controllers
         public async Task<IActionResult> GetConferenceSpeakers([FromRoute]Guid id)
         {
             var speakers = await _db.Speakers.AsNoTracking()
+                .OrderBy(x => x.Order)
                 .Include(s => s.SessionSpeakers)
                 .ThenInclude(ss => ss.Session)
                 .Where(x => x.SessionSpeakers.Any(y => y.Session.ConferenceID == id))

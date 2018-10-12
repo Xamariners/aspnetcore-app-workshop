@@ -303,7 +303,6 @@ var viewportWidth = $(window).width();
         swipeToSlide: true,
         infinite: false,
         variableWidth: true,
-        infinite: true,      
     });
 
   /* blog Slider */
